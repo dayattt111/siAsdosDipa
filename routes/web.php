@@ -1,31 +1,57 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\mainController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/register', function () {
-    return view('Mahasiswa/register');
-});
+// login and regist
+Route::get('/', [mainController::class, 'index']);
+Route::get('/register', [mainController::class, 'register']);
+Route::post('/logout', [mainController::class, 'logout']);
 
-Route::get('/jadwalMhs', function () {
-    return view('Mahasiswa/jadwalMhs');
-});
-Route::post('/jadwalMhs', function () {
-    return view('Mahasiswa/jadwalMhs');
-});
-Route::get('/jadwalMhs/uploadDocs', function () {
-    return view('Mahasiswa/uploadDocs');
-});
+// mahasswa
+Route::post('/jadwalMhs', [mainController::class, 'sendJadwalMhs']);
+Route::get('/jadwalMhs', [mainController::class, 'jadwalMhs']);
+Route::get('/jadwalMhs/uploadDocs', [mainController::class, 'uploadDocs']);
+Route::get('/jadwalMhs/status', [mainController::class, 'cekStatus']);
+Route::post('/jadwalMhs/status', [mainController::class, 'kirimStatus']);
 
-Route::get('/jadwalMhs/status', function () {
-    return view('Mahasiswa/statusSeleksi');
-});
+// Dosen
+Route::post('/daftarAsdos', [mainController::class, 'indexDosen']);
+Route::get('/Dosen/cekAsdos', [mainController::class, 'daftarAsdos']);
+Route::get('/Dosen/cekCalonAsdos', [mainController::class, 'daftarCalonAsdos']);
+Route::get('/Dosen/komentar', [mainController::class, 'komentarDosen']);
+Route::post('/Dosen/kirimKomentar', [mainController::class, 'kirimKomentarDosen']);
 
-Route::post('/jadwalMhs/status', function () {
-    return view('Mahasiswa/statusSeleksi');
-});
+// Admin
+Route::post('/adminAsdos', [mainController::class, 'indexAdmin']);
+
+
+
+// Route::get('/jadwalMhs', [mainController::class, 'jadwalMhs']);
+// Route::get('/jadwalMhs/uploadDocs', [mainController::class, 'uploadDocs']);
+// Route::get('/jadwalMhs/status', [mainController::class, 'cekStatus']);
+// Route::post('/jadwalMhs/status', [mainController::class, 'kirimStatus']);
+
+// Route::get('/jadwalMhs', function () {
+//     return view('Mahasiswa/jadwalMhs');
+// });
+// Route::post('/jadwalMhs', function () {
+//     return view('Mahasiswa/jadwalMhs');
+// });
+// Route::get('/jadwalMhs/uploadDocs', function () {
+//     return view('Mahasiswa/uploadDocs');
+// });
+
+// Route::get('/jadwalMhs/status', function () {
+//     return view('Mahasiswa/statusSeleksi');
+// });
+
+// Route::post('/jadwalMhs/status', function () {
+//     return view('Mahasiswa/statusSeleksi');
+// });
+
+
+
 
 
 

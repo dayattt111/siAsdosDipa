@@ -62,6 +62,16 @@
   </style>
 </head>
 <body>
+  <header class="bg-white shadow-md py-3 px-6 flex items-center justify-between">
+    <!-- Kiri: Logo atau Gambar Profil -->
+    <div class="flex items-center space-x-3">
+        {{-- <img src="LogoUndipa.png" alt="Profile" class="w-10 h-10 rounded-full border"> --}}
+        {{-- <h1 class="text-xl font-semibold text-gray-800">Jadwal Asdos</h1> --}}
+    </div>
+
+    <!-- Kanan: Tombol Logout -->
+    <a href="/" class="btn">Logout</a>
+</header>
   <div class="container">
     <h2>Status Asdos</h2>
 

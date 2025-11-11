@@ -61,7 +61,11 @@
       <center><h1>Login</h1></center>
       <p class="desc">Silakan Login menggunakan email dan kata sandi Anda.</p>
 
-      <form method="post" action="/jadwalMhs">
+      {{-- Mahasiswa, Dosen, Admin --}}
+
+      {{-- <form method="post" action="/jadwalMhs"> --}}
+      {{-- <form method="post" action="/daftarAsdos"> --}}
+      <form method="post" action="/adminAsdos">
         @csrf
 
         <div>

@@ -67,21 +67,15 @@
 </head>
 <body>
 
-    <header class="bg-white shadow-md py-3 px-6 flex items-center justify-between">
+<header class="bg-white shadow-md py-3 px-6 flex items-center justify-between">
     <!-- Kiri: Logo atau Gambar Profil -->
     <div class="flex items-center space-x-3">
-        <img src="/resources/images/logoUndipa.png" alt="Profile" class="w-10 h-10 rounded-full border">
+        {{-- <img src="LogoUndipa.png" alt="Profile" class="w-10 h-10 rounded-full border"> --}}
         {{-- <h1 class="text-xl font-semibold text-gray-800">Jadwal Asdos</h1> --}}
     </div>
 
     <!-- Kanan: Tombol Logout -->
-    <form action="" method="POST">
-        @csrf
-        <button type="submit" 
-            class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-medium transition">
-            Logout
-        </button>
-    </form>
+    <a href="/" class="btn">Logout</a>
 </header>
 
 
