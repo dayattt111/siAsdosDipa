@@ -1,0 +1,117 @@
+<!-- resources/views/mhs/jadwal.blade.php -->
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jadwal Asdos</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #f5f7fa;
+    }
+    .container {
+      max-width: 600px;
+      margin: 60px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+    }
+    a{
+        color: white
+    }
+    h2 {
+      margin-top: 0;
+      font-size: 22px;
+      color: #111;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+    }
+    .jadwal-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 10px 14px;
+      margin-bottom: 10px;
+    }
+    .btn {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 6px;
+      background: #2563eb;
+      color: #fff;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+    }
+    .status {
+      font-size: 14px;
+      color: #333;
+    }
+    a.link {
+      font-size: 13px;
+      color: #2563eb;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+    <header class="bg-white shadow-md py-3 px-6 flex items-center justify-between">
+    <!-- Kiri: Logo atau Gambar Profil -->
+    <div class="flex items-center space-x-3">
+        <img src="/resources/images/logoUndipa.png" alt="Profile" class="w-10 h-10 rounded-full border">
+        {{-- <h1 class="text-xl font-semibold text-gray-800">Jadwal Asdos</h1> --}}
+    </div>
+
+    <!-- Kanan: Tombol Logout -->
+    <form action="" method="POST">
+        @csrf
+        <button type="submit" 
+            class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-medium transition">
+            Logout
+        </button>
+    </form>
+</header>
+
+
+  <div class="container">
+    <h2>Jadwal Asdos</h2>
+
+    <div class="jadwal-box">
+      <span>Jadwal</span>
+      <button class="btn"><a href="/jadwalMhs/uploadDocs">Ajukan</a></button>
+    </div>
+    
+
+    <div class="jadwal-box">
+      <span>Jadwal</span>
+      <button class="btn"><a href="/jadwalMhs/uploadDocs">Ajukan</a></button>
+    </div>
+    
+
+    <div class="jadwal-box">
+      <span>Jadwal</span>
+      <button class="btn"><a href="/jadwalMhs/uploadDocs">Ajukan</a></button>
+    </div>
+    
+
+
+    <div class="bottom">
+    <a href="jadwalMhs/status" class="btn">status seleksi</a>
+
+    <a href="#" class="link">show more</a>
+    </div>
+  </div>
+</body>
+</html>
