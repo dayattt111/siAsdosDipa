@@ -1,243 +1,81 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Daftar Asdos</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dosen - Daftar Asdos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-            background: #f5f7fa;
-        }
-        #fx{
-            display: flex;
-            justify-content: space-between;
-        }
-        .container {
-            max-width: 600px;
-            margin: 60px auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.05);
-        }
-        a{
-            color: white; /* Default untuk link di dalam button */
-            text-decoration: none;
-        }
-        h2 {
-            margin-top: 0;
-            font-size: 22px;
-            color: #111;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 10px;
-        }
-        .jadwal-box {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            padding: 10px 14px;
-            margin-bottom: 10px;
-        }
-        .btn {
-            padding: 6px 12px;
-            border: none;
-            border-radius: 6px;
-            background: #2563eb;
-            color: #fff;
-            cursor: pointer;
-            font-size: 13px;
-        }
-        .bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 15px;
-        }
-        .status {
-            font-size: 14px;
-            color: #333;
-        }
-        a.link {
-            font-size: 13px;
-            color: #2563eb;
-            text-decoration: none;
-        }
-
-        /* --- STYLING MODAL BARU --- */
+        /* CSS Tambahan untuk Modal (dapat diubah ke utility class jika diperlukan) */
         .modal {
-            display: none; /* Sembunyikan secara default */
+            display: none; 
             position: fixed;
-            z-index: 10; /* Di atas konten lain */
+            z-index: 50; /* Z-index tinggi */
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0,0,0,0.4); /* Background gelap transparan */
+            background-color: rgba(0,0,0,0.5); /* Background gelap transparan */
         }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto; /* 15% dari atas dan di tengah */
-            padding: 25px;
-            border: 1px solid #888;
-            width: 90%; /* Lebar modal */
-            max-width: 400px; /* Maksimal lebar */
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-
-        .modal-header {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #111;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 14px;
-            font-weight: 500;
-            color: #333;
-        }
-
-        .form-group input[type="text"],
-        .form-group textarea {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 14px;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        .modal-footer {
-            display: flex;
-            justify-content: flex-end;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .btn-close {
-            background: #6c757d; /* Abu-abu */
-        }
-        .btn-send {
-            background: #28a745; /* Hijau */
-        }
-
     </style>
 </head>
-<body>
+<body class="bg-gray-100 font-sans">
 
-<header id="fx" class="bg-white shadow-md py-3 px-6 flex items-center justify-between">
-    <a href="/" class="btn">Logout</a>
-    <a class="btn" href="/Dosen/cekCalonAsdos">Cek Calon Asdos</a>
-</header>
+<div class="flex min-h-screen">
+    <aside class="w-64 bg-white shadow-xl border-r border-gray-200 flex flex-col">
+        <div class="p-6 border-b border-gray-200 text-center">
+            <div class="w-20 h-20 mx-auto bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold">DSN</div>
+            <p class="mt-3 font-semibold text-gray-700">Panel Dosen</p>
+        </div>
+        <nav class="flex-1 px-4 py-6 space-y-2">
+            <a href="/Dosen/daftarAsdos" class="block px-4 py-3 rounded-xl bg-blue-500 text-white font-semibold transition-all">
+                Daftar Asdos
+            </a>
+            <a href="/Dosen/cekCalonAsdos" class="block px-4 py-3 rounded-xl hover:bg-blue-100 hover:text-blue-700 transition-all font-medium text-gray-700">
+                Cek Calon Asdos
+            </a>
+        </nav>
+        <div class="p-4 border-t border-gray-200">
+            <a href="/" class="block w-full text-center bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition">Logout</a>
+        </div>
+    </aside>
 
-<div class="container">
-    <h2>Daftar Asdos</h2>
+    <main class="flex-1 p-8 bg-gray-50">
+        <div class="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+            <h1 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-3">Daftar Asisten Dosen Anda</h1>
+            
+            <div class="space-y-3">
+                
+                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition">
+                    <span class="text-base font-medium text-gray-700">Jadwal Komputasi (Asdos: **Budi**)</span>
+                    <button class="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition" onclick="openModal('Budi')">
+                        Hubungi
+                    </button>
+                </div> 
 
-    <div class="jadwal-box">
-        <span>Jadwal Komputasi (Asdos: Budi)</span>
-        <button class="btn" onclick="openModal('Budi')">Hubungi</button>
-    </div>    
-    <div class="jadwal-box">
-        <span>Jadwal Aljabar Linier (Asdos: Sita)</span>
-        <button class="btn" onclick="openModal('Sita')">Hubungi</button>
-    </div>    
-    <div class="jadwal-box">
-        <span>Jadwal Struktur Data (Asdos: Joni)</span>
-        <button class="btn" onclick="openModal('Joni')">Hubungi</button>
-    </div>    
+                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition">
+                    <span class="text-base font-medium text-gray-700">Jadwal Aljabar Linier (Asdos: **Sita**)</span>
+                    <button class="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition" onclick="openModal('Sita')">
+                        Hubungi
+                    </button>
+                </div>
 
-    <div class="bottom">
-        <a href="#" class="link">show more</a>
-    </div>
+                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition">
+                    <span class="text-base font-medium text-gray-700">Jadwal Struktur Data (Asdos: **Joni**)</span>
+                    <button class="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition" onclick="openModal('Joni')">
+                        Hubungi
+                    </button>
+                </div> 
+                
+            </div>
+
+            <div class="flex justify-end mt-4">
+                <a href="#" class="text-sm font-medium text-blue-600 hover:text-blue-800 transition">Lihat Semua >></a>
+            </div>
+        </div>
+    </main>
 </div>
 
-<div id="contactModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">Hubungi Asdos</div>
-        <form id="contactForm">
-            <div class="form-group">
-                <label for="asdosName">Asdos yang dihubungi:</label>
-                <input type="text" id="asdosName" name="asdosName" readonly>
-            </div>
-
-            <div class="form-group">
-                <label for="yourName">Nama Anda (Dosen):</label>
-                <input type="text" id="yourName" name="yourName" placeholder="Masukkan Nama Anda">
-            </div>
-
-            <div class="form-group">
-                <label for="comment">Perihal/Komentar:</label>
-                <textarea id="comment" name="comment" placeholder="Tulis perihal atau komentar di sini..."></textarea>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-close" onclick="closeModal()">Tutup</button>
-                <button type="submit" class="btn btn-send">Kirim Pesan</button>
-            </div>
-        </form>
-    </div>
-</div>
-<script>
-    // Ambil elemen modal
-    const modal = document.getElementById('contactModal');
-    // Ambil elemen input nama asdos di modal
-    const asdosNameInput = document.getElementById('asdosName');
-    // Ambil form
-    const contactForm = document.getElementById('contactForm');
-
-    // Fungsi untuk menampilkan modal dan mengisi nama asdos
-    function openModal(asdosName) {
-        asdosNameInput.value = asdosName;
-        modal.style.display = "block";
-    }
-
-    // Fungsi untuk menyembunyikan modal
-    function closeModal() {
-        modal.style.display = "none";
-        // Reset form setelah ditutup
-        contactForm.reset();
-    }
-
-    // Ketika user mengklik di luar modal, tutup modal
-    window.onclick = function(event) {
-        if (event.target === modal) {
-            closeModal();
-        }
-    }
-
-    // Contoh penanganan submit form (hanya placeholder)
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const namaAnda = document.getElementById('yourName').value;
-        const komentar = document.getElementById('comment').value;
-        const asdos = asdosNameInput.value;
-
-        alert(`Pesan berhasil dikirim kepada Asdos ${asdos} dari ${namaAnda}. Komentar: "${komentar}"`);
-
-        closeModal();
-    });
-
-</script>
 </body>
 </html>

@@ -1,36 +1,58 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\mainController;
+use App\Http\Controllers\menuController;
 
 // login and regist
-Route::get('/', [mainController::class, 'index']);
-Route::get('/register', [mainController::class, 'register']);
-Route::post('/logout', [mainController::class, 'logout']);
+Route::get('/', [menuController::class, 'index']);
+Route::get('/register', [menuController::class, 'register']);
+Route::post('/logout', [menuController::class, 'logout']);
 
 // mahasswa
-Route::post('/jadwalMhs', [mainController::class, 'sendJadwalMhs']);
-Route::get('/jadwalMhs', [mainController::class, 'jadwalMhs']);
-Route::get('/jadwalMhs/uploadDocs', [mainController::class, 'uploadDocs']);
-Route::get('/jadwalMhs/status', [mainController::class, 'cekStatus']);
-Route::post('/jadwalMhs/status', [mainController::class, 'kirimStatus']);
+Route::post('/jadwalMhs', [menuController::class, 'sendJadwalMhs']);
+Route::get('/jadwalMhs', [menuController::class, 'jadwalMhs']);
+Route::get('/jadwalMhs/uploadDocs', [menuController::class, 'uploadDocs']);
+Route::get('/jadwalMhs/status', [menuController::class, 'cekStatus']);
+Route::post('/jadwalMhs/status', [menuController::class, 'kirimStatus']);
 
 // Dosen
-Route::post('/daftarAsdos', [mainController::class, 'indexDosen']);
-Route::get('/Dosen/cekAsdos', [mainController::class, 'daftarAsdos']);
-Route::get('/Dosen/cekCalonAsdos', [mainController::class, 'daftarCalonAsdos']);
-Route::get('/Dosen/komentar', [mainController::class, 'komentarDosen']);
-Route::post('/Dosen/kirimKomentar', [mainController::class, 'kirimKomentarDosen']);
+Route::post('/Dosen', [menuController::class, 'indexDosen']);
+Route::get('/Dosen/cekAsdos', [menuController::class, 'daftarAsdos']);
+Route::get('/Dosen/cekCalonAsdos', [menuController::class, 'daftarCalonAsdos']);
+Route::get('/Dosen/komentar', [menuController::class, 'komentarDosen']);
+Route::post('/Dosen/kirimKomentar', [menuController::class, 'kirimKomentarDosen']);
 
 // Admin
-Route::post('/adminAsdos', [mainController::class, 'indexAdmin']);
+Route::post('/adminAsdos', [menuController::class, 'indexAdmin']);
+Route::get('/adminAsdos', [menuController::class,   'indexAdmin']);
+Route::get('Admin/Asdos', [menuController::class,   'dataAsdos']);
+Route::post('/Admin/Asdos', [menuController::class,   'dataAsdos']);
+Route::get('/Admin/calonAsdos', [menuController::class, 'dataCalonAsdos']);
+Route::post('/Admin/calonAsdos', [menuController::class, 'dataCalonAsdos']);
+Route::get('/Admin/kelolaJadwal', [menuController::class, 'kelolaJadwal']);
+Route::post('/Admin/kelolaJadwal', [menuController::class, 'kelolaJadwal']);
+Route::get('/Admin/detail', [menuController::class, 'detailAsdos']);
+Route::get('/Admin/laporan', [menuController::class, 'laporan']);
 
+Route::get('/Admin/tambah', [menuController::class, 'tambahData']);
+Route::get('/Admin/Hapus', [menuController::class, 'hapusData']);
+Route::get('/Admin/edit', [menuController::class, 'editData']);
+Route::get('/Admin/detail', [menuController::class, 'detailData']);
 
+Route::get('/Admin/lihatJadwal', [menuController::class, 'lihatJadwal']);
+Route::get('/Admin/hapusJadwal', [menuController::class, 'hapusJadwal']);
+Route::get('/Admin/editJadwal', [menuController::class, 'editJadwal']);
+Route::get('/Admin/tambahJadwal', [menuController::class, 'tambahJadwal']);
 
-// Route::get('/jadwalMhs', [mainController::class, 'jadwalMhs']);
-// Route::get('/jadwalMhs/uploadDocs', [mainController::class, 'uploadDocs']);
-// Route::get('/jadwalMhs/status', [mainController::class, 'cekStatus']);
-// Route::post('/jadwalMhs/status', [mainController::class, 'kirimStatus']);
+Route::get('/Admin/tambahLaporan', [menuController::class, 'tambahLaporan']);
+Route::get('/Admin/editLaporan', [menuController::class, 'editLaporan']);
+Route::get('/Admin/hapusLaporan', [menuController::class, 'hapusLaporan']);
+// Route::get('/Admin/Laporan', [menuController::class, 'Laporan']);
+
+// Route::get('/jadwalMhs', [menuController::class, 'jadwalMhs']);
+// Route::get('/jadwalMhs/uploadDocs', [menuController::class, 'uploadDocs']);
+// Route::get('/jadwalMhs/status', [menuController::class, 'cekStatus']);
+// Route::post('/jadwalMhs/status', [menuController::class, 'kirimStatus']);
 
 // Route::get('/jadwalMhs', function () {
 //     return view('Mahasiswa/jadwalMhs');
