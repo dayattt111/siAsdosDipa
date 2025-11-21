@@ -17,8 +17,11 @@ Route::post('/jadwalMhs/status', [menuController::class, 'kirimStatus']);
 
 // Dosen
 Route::post('/Dosen', [menuController::class, 'indexDosen']);
+Route::get('/Dosen', [menuController::class, 'indexDosen']);
 Route::get('/Dosen/cekAsdos', [menuController::class, 'daftarAsdos']);
+Route::get('/Dosen/semuaAsdos', [menuController::class, 'semuaAsdos']);
 Route::get('/Dosen/cekCalonAsdos', [menuController::class, 'daftarCalonAsdos']);
+Route::get('/Dosen/semuaCalonAsdos', [menuController::class, 'semuaCalonAsdos']);
 Route::get('/Dosen/komentar', [menuController::class, 'komentarDosen']);
 Route::post('/Dosen/kirimKomentar', [menuController::class, 'kirimKomentarDosen']);
 

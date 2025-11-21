@@ -1,196 +1,72 @@
-<!-- resources/views/mhs/jadwal.blade.php -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jadwal Asdos</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: #f5f7fa;
-    }
-    #fx{
-      display: flex;
-      justify-content: space-between;
-    }
-    .container {
-      max-width: 600px;
-      margin: 60px auto;
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
-    }
-    a{
-      color: white;
-    }
-    h2 {
-      margin-top: 0;
-      font-size: 22px;
-      color: #111;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 10px;
-    }
-    .jadwal-box {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      padding: 10px 14px;
-      margin-bottom: 10px;
-    }
-    .btn {
-      padding: 6px 12px;
-      border: none;
-      border-radius: 6px;
-      background: #2563eb;
-      color: #fff;
-      cursor: pointer;
-      font-size: 13px;
-    }
-    .bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 15px;
-    }
-    .status {
-      font-size: 14px;
-      color: #333;
-    }
-    a.link {
-      font-size: 13px;
-      color: #2563eb;
-      text-decoration: none;
-    }
-
-    /* === MODAL STYLE === */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 100;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0,0,0,0.4);
-    }
-
-    .modal-content {
-      background-color: #fff;
-      margin: 10% auto;
-      padding: 20px;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 500px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      animation: fadeIn 0.3s ease;
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(-10px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-
-    .modal-header {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 10px;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 8px;
-    }
-
-    .modal-body p {
-      margin: 8px 0;
-      color: #333;
-      font-size: 14px;
-    }
-
-    .modal-footer {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
-    }
-
-    .btn-secondary {
-      background: #e5e7eb;
-      color: #111;
-    }
-
-    .photo-box {
-      width: 100px;
-      height: 100px;
-      background: #e5e7eb;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 1px dashed #ccc;
-      margin-left: auto;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dosen - Cek Calon Asdos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gray-100 min-h-screen flex flex-col">
 
-<header id="fx" class="bg-white shadow-md py-3 px-6 flex items-center justify-between">
-  <a href="/" class="btn">Logout</a>
-  <a class="btn" href="/Dosen/cekAsdos">Cek Asdos</a>
-</header>
-
-<div class="container">
-  <h2>Daftar Calon Asdos</h2>
-    {{-- @csrf --}}
-  <div class="jadwal-box">
-    <span>Calon Asdos</span>
-    <div class="subColumn">
-      <a class="btn" href="/Dosen/komentar">Komentar</a>
-      <button class="btn" onclick="openModal()">Detail</button>
-    </div>
-  </div>
-</div>
-
-<!-- === MODAL DETAIL CALON ASDOS === -->
-<div id="detailModal" class="modal">
-  <div class="modal-content">
-    <div class="modal-header">Detail Calon Asdos</div>
-    <div class="modal-body">
-      <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-        <div>
-          <p><b>Nama:</b> Budi Santoso</p>
-          <p><b>NIM:</b> 232220</p>
-          <p><b>Pilihan Jadwal:</b> Senin, 09.00</p>
-          <p><b>Dosen Rekomendasi:</b> Dr. Ahmad</p>
-          <p><b>Alasan Mhs:</b> Ingin menambah pengalaman mengajar</p>
-          <p><b>Transkrip Nilai:</b> 3.85</p>
+<div class="flex flex-1">
+    <aside class="w-64 bg-white shadow-xl border-r border-gray-200 flex flex-col">
+        <div class="p-6 border-b border-gray-200 text-center">
+            <div class="w-20 h-20 mx-auto bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 text-2xl font-bold mb-2">DSN</div>
+            <p class="font-semibold text-gray-700">Panel Dosen</p>
         </div>
-        <div class="photo-box">Foto</div>
-      </div>
-    </div>
+        <nav class="flex-1 px-4 py-6 space-y-2">
+            <a href="/Dosen" class="flex items-center px-4 py-3 rounded-xl text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition-all font-medium">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a5 5 00-5 5v2a2 2 00-2 2v5a2 2 002 2h10a2 2 002-2v-5a2 2 00-2-2V7a5 5 00-5-5zm0 2a3 3 013 3v2H7V7a3 3 013-3zm1 10.158V16h-2v-1.842a1 1 000-1.707v-1.636a1 1 001.531-.832l1.636 1.636a1 1 010 1.414z"/></svg>
+                Daftar Asdos
+            </a>
+            <a href="/Dosen/cekCalonAsdos" class="flex items-center px-4 py-3 rounded-xl bg-blue-600 text-white font-semibold transition-all shadow-md">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 010-6 3 3 010 6zm-7 9a7 7 0114 0h-2c-.524-1.31-1.282-2.434-2.188-3.344C11.666 14.12 10.372 15 9 15c-.933 0-1.82-.25-2.584-.719C5.462 13.916 4.704 12.792 4.188 11.488A7 7 003 18z" clip-rule="evenodd"/></svg>
+                Cek Calon Asdos
+            </a>
+        </nav>
+        <div class="p-4 border-t border-gray-200">
+            <a href="/" class="block w-full text-center bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition font-medium">Logout</a>
+        </div>
+    </aside>
 
-    <div class="modal-footer">
-      <button class="btn btn-secondary" onclick="closeModal()">← Back</button>
-      <a href="/Dosen/komentar" class="btn">Berikan Penilaian & Komentar</a>
-    </div>
-  </div>
+    <main class="flex-1 p-8">
+        <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-2xl border border-gray-200">
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 border-b pb-3">Daftar Calon Asisten Dosen</h1>
+            
+            <div class="space-y-4">
+                
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 bg-gray-50 rounded-xl border border-gray-200 hover:shadow-md transition">
+                    <div class="mb-3 sm:mb-0">
+                        <span class="text-base font-medium text-gray-700">Calon Asdos: **Budi Santoso**</span>
+                        <p class="text-xs text-gray-500">Mendaftar untuk: Senin, 09.00</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="/Dosen/komentar/232220" class="px-3 py-2 bg-yellow-500 text-white text-sm rounded-lg hover:bg-yellow-600 transition font-medium">
+                            Komentar
+                        </a>
+                        <a href="/Dosen/detailCalonAsdos/232220" class="px-3 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition font-medium">
+                            Detail
+                        </a>
+                    </div>
+                </div> 
+                
+            </div>
+            <div class="flex justify-end mt-6 pt-3 border-t border-gray-100">
+                {{-- <a href="/Dosen/cekCalonAsdos" class="text-sm font-medium text-blue-600 hover:text-blue-800 transition"><< Kembali</a> --}}
+                <a href="/Dosen/semuaCalonAsdos" class="text-sm font-medium text-blue-600 hover:text-blue-800 transition">Lihat Semua >></a>
+            </div>
+        </div>
+
+
+
+    </main>
 </div>
 
-<script>
-  function openModal() {
-    document.getElementById('detailModal').style.display = 'block';
-  }
-  function closeModal() {
-    document.getElementById('detailModal').style.display = 'none';
-  }
-  window.onclick = function(event) {
-    const modal = document.getElementById('detailModal');
-    if (event.target == modal) {
-      modal.style.display = 'none';
-    }
-  }
-</script>
 </body>
 </html>

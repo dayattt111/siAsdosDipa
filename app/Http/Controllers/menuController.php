@@ -44,8 +44,17 @@ class menuController extends Controller
     public function daftarAsdos(){
         return view('Dosen/daftarAsdos');
     }  
+    // public function daftarAsdos(){
+    //     return view('Dosen/daftarAsdos');
+    // }  
+    public function semuaAsdos(){
+        return view('Dosen/semuaAsdos');
+    }  
     public function daftarCalonAsdos(){
         return view('Dosen/cekCalonAsdos');
+    }  
+    public function semuaCalonAsdos(){
+        return view('Dosen/semuaCalonAsdos');
     }  
     public function komentarDosen(){
         return view('Dosen/komentar');

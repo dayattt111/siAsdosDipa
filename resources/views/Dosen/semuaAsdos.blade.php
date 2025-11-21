@@ -82,7 +82,7 @@
                     </a>
                 </div> 
 
-                {{-- <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-5 bg-white rounded-xl shadow-lg border-l-4 border-blue-500 hover:shadow-xl transition duration-300">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-5 bg-white rounded-xl shadow-lg border-l-4 border-blue-500 hover:shadow-xl transition duration-300">
                     <div class="mb-3 sm:mb-0">
                         <p class="text-lg font-semibold text-gray-800">Jadwal Aljabar Linier</p>
                         <p class="text-sm text-gray-600">Asisten Dosen: **Sita Dewi**</p>
@@ -106,12 +106,87 @@
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" viewBox="0 0 20 20" fill="currentColor"><path d="M17.43 2.93A10 10 0 002.58 17.42l-.74 2.5a.5.5 0 00.67.67l2.5-.74A10 10 0 0017.43 2.93zM10 18a8 8 0 110-16 8 8 0 010 16zm-1.5-6.5a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5zm3 0a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5z"/></svg>
                         Hubungi via WA
                     </a>
-                </div>  --}}
+                </div> 
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-5 bg-white rounded-xl shadow-lg border-l-4 border-blue-500 hover:shadow-xl transition duration-300">
+                    <div class="mb-3 sm:mb-0">
+                        <p class="text-lg font-semibold text-gray-800">Jadwal Aljabar Linier</p>
+                        <p class="text-sm text-gray-600">Asisten Dosen: **Sita Dewi**</p>
+                    </div>
+                    <a href="https://wa.me/6281234567891?text=Yth.%20Sita,%20Saya%20Dosen%20Anda.%20Mohon%20konfirmasi%20jadwal%20asistensi%20Aljabar%20Linier." 
+                       target="_blank" 
+                       class="flex items-center px-4 py-2 bg-green-500 text-white text-sm font-medium rounded-full shadow-md hover:bg-green-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" viewBox="0 0 20 20" fill="currentColor"><path d="M17.43 2.93A10 10 0 002.58 17.42l-.74 2.5a.5.5 0 00.67.67l2.5-.74A10 10 0 0017.43 2.93zM10 18a8 8 0 110-16 8 8 0 010 16zm-1.5-6.5a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5zm3 0a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5z"/></svg>
+                        Hubungi via WA
+                    </a>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-5 bg-white rounded-xl shadow-lg border-l-4 border-blue-500 hover:shadow-xl transition duration-300">
+                    <div class="mb-3 sm:mb-0">
+                        <p class="text-lg font-semibold text-gray-800">Jadwal Struktur Data</p>
+                        <p class="text-sm text-gray-600">Asisten Dosen: **Joni Iskandar**</p>
+                    </div>
+                    <a href="https://wa.me/6281234567892?text=Yth.%20Joni,%20Saya%20Dosen%20Anda.%20Mohon%20konfirmasi%20jadwal%20asistensi%20Struktur%20Data." 
+                       target="_blank" 
+                       class="flex items-center px-4 py-2 bg-green-500 text-white text-sm font-medium rounded-full shadow-md hover:bg-green-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" viewBox="0 0 20 20" fill="currentColor"><path d="M17.43 2.93A10 10 0 002.58 17.42l-.74 2.5a.5.5 0 00.67.67l2.5-.74A10 10 0 0017.43 2.93zM10 18a8 8 0 110-16 8 8 0 010 16zm-1.5-6.5a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5zm3 0a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5z"/></svg>
+                        Hubungi via WA
+                    </a>
+                </div> 
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-5 bg-white rounded-xl shadow-lg border-l-4 border-blue-500 hover:shadow-xl transition duration-300">
+                    <div class="mb-3 sm:mb-0">
+                        <p class="text-lg font-semibold text-gray-800">Jadwal Aljabar Linier</p>
+                        <p class="text-sm text-gray-600">Asisten Dosen: **Sita Dewi**</p>
+                    </div>
+                    <a href="https://wa.me/6281234567891?text=Yth.%20Sita,%20Saya%20Dosen%20Anda.%20Mohon%20konfirmasi%20jadwal%20asistensi%20Aljabar%20Linier." 
+                       target="_blank" 
+                       class="flex items-center px-4 py-2 bg-green-500 text-white text-sm font-medium rounded-full shadow-md hover:bg-green-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" viewBox="0 0 20 20" fill="currentColor"><path d="M17.43 2.93A10 10 0 002.58 17.42l-.74 2.5a.5.5 0 00.67.67l2.5-.74A10 10 0 0017.43 2.93zM10 18a8 8 0 110-16 8 8 0 010 16zm-1.5-6.5a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5zm3 0a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5z"/></svg>
+                        Hubungi via WA
+                    </a>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-5 bg-white rounded-xl shadow-lg border-l-4 border-blue-500 hover:shadow-xl transition duration-300">
+                    <div class="mb-3 sm:mb-0">
+                        <p class="text-lg font-semibold text-gray-800">Jadwal Struktur Data</p>
+                        <p class="text-sm text-gray-600">Asisten Dosen: **Joni Iskandar**</p>
+                    </div>
+                    <a href="https://wa.me/6281234567892?text=Yth.%20Joni,%20Saya%20Dosen%20Anda.%20Mohon%20konfirmasi%20jadwal%20asistensi%20Struktur%20Data." 
+                       target="_blank" 
+                       class="flex items-center px-4 py-2 bg-green-500 text-white text-sm font-medium rounded-full shadow-md hover:bg-green-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" viewBox="0 0 20 20" fill="currentColor"><path d="M17.43 2.93A10 10 0 002.58 17.42l-.74 2.5a.5.5 0 00.67.67l2.5-.74A10 10 0 0017.43 2.93zM10 18a8 8 0 110-16 8 8 0 010 16zm-1.5-6.5a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5zm3 0a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5z"/></svg>
+                        Hubungi via WA
+                    </a>
+                </div> 
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-5 bg-white rounded-xl shadow-lg border-l-4 border-blue-500 hover:shadow-xl transition duration-300">
+                    <div class="mb-3 sm:mb-0">
+                        <p class="text-lg font-semibold text-gray-800">Jadwal Aljabar Linier</p>
+                        <p class="text-sm text-gray-600">Asisten Dosen: **Sita Dewi**</p>
+                    </div>
+                    <a href="https://wa.me/6281234567891?text=Yth.%20Sita,%20Saya%20Dosen%20Anda.%20Mohon%20konfirmasi%20jadwal%20asistensi%20Aljabar%20Linier." 
+                       target="_blank" 
+                       class="flex items-center px-4 py-2 bg-green-500 text-white text-sm font-medium rounded-full shadow-md hover:bg-green-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" viewBox="0 0 20 20" fill="currentColor"><path d="M17.43 2.93A10 10 0 002.58 17.42l-.74 2.5a.5.5 0 00.67.67l2.5-.74A10 10 0 0017.43 2.93zM10 18a8 8 0 110-16 8 8 0 010 16zm-1.5-6.5a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5zm3 0a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5z"/></svg>
+                        Hubungi via WA
+                    </a>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-5 bg-white rounded-xl shadow-lg border-l-4 border-blue-500 hover:shadow-xl transition duration-300">
+                    <div class="mb-3 sm:mb-0">
+                        <p class="text-lg font-semibold text-gray-800">Jadwal Struktur Data</p>
+                        <p class="text-sm text-gray-600">Asisten Dosen: **Joni Iskandar**</p>
+                    </div>
+                    <a href="https://wa.me/6281234567892?text=Yth.%20Joni,%20Saya%20Dosen%20Anda.%20Mohon%20konfirmasi%20jadwal%20asistensi%20Struktur%20Data." 
+                       target="_blank" 
+                       class="flex items-center px-4 py-2 bg-green-500 text-white text-sm font-medium rounded-full shadow-md hover:bg-green-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" viewBox="0 0 20 20" fill="currentColor"><path d="M17.43 2.93A10 10 0 002.58 17.42l-.74 2.5a.5.5 0 00.67.67l2.5-.74A10 10 0 0017.43 2.93zM10 18a8 8 0 110-16 8 8 0 010 16zm-1.5-6.5a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5zm3 0a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5z"/></svg>
+                        Hubungi via WA
+                    </a>
+                </div> 
                 
             </div>
-
-            <div class="flex justify-end mt-6 pt-3 border-t border-gray-100">
-                <a href="/Dosen/semuaAsdos" class="text-sm font-medium text-blue-600 hover:text-blue-800 transition">Lihat Semua >></a>
+            <div class="flex justify-between mt-6 pt-3 border-t border-gray-100">
+                <a href="/Dosen" class="text-sm font-medium text-blue-600 hover:text-blue-800 transition"><< Kembali</a>
+                {{-- <a href="/Dosen/semuaAsdos" class="text-sm font-medium text-blue-600 hover:text-blue-800 transition">Lihat Semua >></a> --}}
             </div>
         </div>
     </main>
