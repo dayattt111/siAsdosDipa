@@ -8,7 +8,7 @@ class menuController extends Controller
 {
     // login & register
     public function index(){
-        return view('welcome');
+        return view('login');
     }
     public function register(){
         return view('Mahasiswa/register');

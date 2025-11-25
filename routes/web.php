@@ -2,11 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\menuController;
+use App\Http\Controllers\userController;
 
 // login and regist
 Route::get('/', [menuController::class, 'index']);
 Route::get('/register', [menuController::class, 'register']);
 Route::post('/logout', [menuController::class, 'logout']);
+Route::post('/login', [userController::class, 'auth']);
 
 // mahasswa
 Route::post('/jadwalMhs', [menuController::class, 'sendJadwalMhs']);
