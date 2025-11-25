@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\menuController;
-use App\Http\Controllers\userController;
 
 // login and regist
 Route::get('/', [menuController::class, 'index']);
@@ -28,12 +27,20 @@ Route::get('/Dosen/komentar', [menuController::class, 'komentarDosen']);
 Route::post('/Dosen/kirimKomentar', [menuController::class, 'kirimKomentarDosen']);
 
 // Admin
-Route::post('/adminAsdos', [menuController::class, 'indexAdmin']);
-Route::get('/adminAsdos', [menuController::class,   'indexAdmin']);
-Route::get('Admin/Asdos', [menuController::class,   'dataAsdos']);
-Route::post('/Admin/Asdos', [menuController::class,   'dataAsdos']);
+Route::post('/adminAsdos', [menuController::class,'indexAdmin']);
+Route::get('/adminAsdos', [menuController::class,'indexAdmin']);
+Route::get('Admin/Asdos', [menuController::class,'dataAsdos']);
+Route::post('/Admin/Asdos', [menuController::class,'dataAsdos']);
+Route::post('/Admin/TambahAsdos', [menuController::class, 'tambahAsdos']);
+Route::get('/Admin/TambahAsdos', [menuController::class, 'tambahAsdos']);
+Route::post('/Admin/editAsdos', [menuController::class, 'editAsdos']);
+Route::get('/Admin/editAsdos', [menuController::class, 'editAsdos']);
 Route::get('/Admin/calonAsdos', [menuController::class, 'dataCalonAsdos']);
 Route::post('/Admin/calonAsdos', [menuController::class, 'dataCalonAsdos']);
+Route::get('/Admin/tambahcalonAsdos', [menuController::class, 'tambahCalonAsdos']);
+Route::post('/Admin/tambahcalonAsdos', [menuController::class, 'tambahCalonAsdos']);
+Route::get('/Admin/editcalonAsdos', [menuController::class, 'editCalonAsdos']);
+Route::post('/Admin/editcalonAsdos', [menuController::class, 'editCalonAsdos']);
 Route::get('/Admin/kelolaJadwal', [menuController::class, 'kelolaJadwal']);
 Route::post('/Admin/kelolaJadwal', [menuController::class, 'kelolaJadwal']);
 Route::get('/Admin/detail', [menuController::class, 'detailAsdos']);

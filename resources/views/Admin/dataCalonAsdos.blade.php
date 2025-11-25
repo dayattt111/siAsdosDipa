@@ -33,7 +33,7 @@
         <h1 class="text-3xl font-bold text-gray-800 mb-6">Data Calon Asdos</h1>
 
         <div class="flex justify-between items-center mb-6">
-            <a href="/Admin/tambah" class="px-5 py-2 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 transition font-medium">Tambah</a>
+            <a href="/Admin/tambahcalonAsdos" class="px-5 py-2 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 transition font-medium">Tambah</a>
 
             <div class="flex items-center bg-white px-4 py-2 rounded-lg shadow border border-gray-200 w-72">
                 <span class="text-gray-500 mr-2">🔍</span>
@@ -41,36 +41,69 @@
             </div>
         </div>
 
-        <div class="space-y-4">
-            <div class="flex justify-between items-center bg-white shadow p-4 rounded-xl border hover:shadow-xl transition-transform hover:scale-[1.02]">
-                <span class="font-medium text-gray-700 truncate mr-4">Mhs: Siti Aisyah (Basis Data A)</span>
-                <span class="font-bold text-green-600 w-12 text-right">Yes</span>
-                <div class="space-x-2 flex ml-4">
-                    <a href="/Admin/detail" class="px-4 py-1 bg-blue-400 text-black rounded-md hover:bg-yellow-500 transition text-sm">Detail</a>
-                    <a href="/Admin/edit" class="px-4 py-1 bg-yellow-400 text-black rounded-md hover:bg-yellow-500 transition text-sm">Edit</a>
-                    <a href="/Admin/Hapus" class="px-4 py-1 bg-red-400 text-black rounded-md hover:bg-yellow-500 transition text-sm">Hapus</a>
-                    {{-- <button class="px-4 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition text-sm">Hapus</button> --}}
-                </div>
-            </div>
-            
-            {{-- <div class="flex justify-between items-center bg-white shadow p-4 rounded-xl border hover:shadow-xl transition-transform hover:scale-[1.02]">
-                <span class="font-medium text-gray-700 truncate mr-4">Mhs: Budi Santoso (Algoritma C)</span>
-                <span class="font-bold text-red-500 w-12 text-right">No</span>
-                <div class="space-x-2 flex ml-4">
-                    <a href="/adminAsdos/edit" class="px-4 py-1 bg-yellow-400 text-black rounded-md hover:bg-yellow-500 transition text-sm">Edit</a>
-                    <button class="px-4 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition text-sm">Hapus</button>
-                </div>
-            </div>
-            
-            <div class="flex justify-between items-center bg-white shadow p-4 rounded-xl border hover:shadow-xl transition-transform hover:scale-[1.02]">
-                <span class="font-medium text-gray-700 truncate mr-4">Mhs: Joni Iskandar (Struktur Data B)</span>
-                <span class="font-bold text-green-600 w-12 text-right">Yes</span>
-                <div class="space-x-2 flex ml-4">
-                    <a href="/adminAsdos/edit" class="px-4 py-1 bg-yellow-400 text-black rounded-md hover:bg-yellow-500 transition text-sm">Edit</a>
-                    <button class="px-4 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition text-sm">Hapus</button>
-                </div>
-            </div> --}}
-        </div>
+<table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider w-12">
+                                No
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider w-40">
+                                Nama Asdos
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider w-48">
+                                Mata Kuliah
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider w-56">
+                                Jadwal
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider w-24">
+                                Verifikasi
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider w-40">
+                                Aksi
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-100">
+                        
+                        <!-- Contoh Baris Data 1: Asdos Terverifikasi -->
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                1
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-gray-900">Siti Aisyah (191101001)</div>
+                                <div class="text-sm text-gray-500">Semester 6 / Lulus Matkul</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                Basis Data (Kelas A)
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                Senin, 14:00 - 16:00
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center">
+                                <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                    Yes
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                <div class="flex items-center justify-center space-x-2">
+                                    <a href="/Admin/detail" class="px-3 py-1.5 bg-blue-400 text-gray-800 rounded-md hover:bg-blue-500 transition text-xs font-semibold shadow-sm">
+                                        Detail
+                                    </a>
+                                    <a href="/Admin/editcalonAsdos" class="px-3 py-1.5 bg-yellow-400 text-gray-800 rounded-md hover:bg-yellow-500 transition text-xs font-semibold shadow-sm">
+                                        Edit
+                                    </a>
+                                    <a href="/Admin/Hapus" class="px-4 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition text-sm font-medium">Hapus</a>
+
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Tambahkan baris data lainnya di sini... -->
+
+                    </tbody>
+                </table>
 
         <a href="#" class="block text-right mt-4 text-blue-600 hover:underline text-sm">Show more</a>
 

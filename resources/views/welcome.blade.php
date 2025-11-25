@@ -59,23 +59,23 @@
   <div class="wrap">
     <div class="card">
       <center><h1>Login</h1></center>
-      <p class="desc">Silakan Login menggunakan email dan kata sandi Anda.</p>
+      {{-- <p class="desc">Silakan Login menggunakan email dan kata sandi Anda.</p> --}}
 
       {{-- Mahasiswa, Dosen, Admin --}}
 
       {{-- <form method="post" action="/jadwalMhs"> --}}
-      <form method="post" action="/Dosen">
-      {{-- <form method="post" action="/adminAsdos"> --}}
+      {{-- <form method="post" action="/Dosen"> --}}
+      <form method="post" action="/adminAsdos">
         @csrf
 
         <div>
-          <label for="email">Email</label>
-          <input id="email" type="email" name="email" value="">
+          {{-- <label for="email">Email</label> --}}
+          <input id="email" type="email" name="email" value="" placeholder="Masukkan email">
         </div>
 
         <div>
-          <label for="password">Kata Sandi</label>
-          <input id="password" type="password" name="password" >
+          {{-- <label for="password">Kata Sandi</label> --}}
+          <input id="password" type="password" name="password" placeholder="Masukkan kata sandi">
         </div>
 
         {{-- <div class="row">

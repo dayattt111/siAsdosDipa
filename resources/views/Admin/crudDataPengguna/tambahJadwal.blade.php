@@ -36,17 +36,17 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label for="mata_kuliah" class="block text-sm font-medium text-gray-700 mb-1">Mata Kuliah</label>
-                        <input type="text" id="mata_kuliah" name="mata_kuliah" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Contoh: Algoritma dan Struktur Data">
+                        <input type="text" id="mata_kuliah" name="mata_kuliah" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Contoh: Algoritma dan Struktur Data">
                     </div>
 
                     <div>
                         <label for="dosen_pengampu" class="block text-sm font-medium text-gray-700 mb-1">Dosen Pengampu</label>
-                        <input type="text" id="dosen_pengampu" name="dosen_pengampu" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Contoh: Dr. Rina Kusuma">
+                        <input type="text" id="dosen_pengampu" name="dosen_pengampu" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Contoh: Dr. Rina Kusuma">
                     </div>
 
                     <div>
                         <label for="hari" class="block text-sm font-medium text-gray-700 mb-1">Hari</label>
-                        <select id="hari" name="hari" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 bg-white">
+                        <select id="hari" name="hari" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 bg-white">
                             <option value="" disabled selected>Pilih Hari</option>
                             <option value="Senin">Senin</option>
                             <option value="Selasa">Selasa</option>
@@ -59,22 +59,22 @@
 
                     <div>
                         <label for="ruangan" class="block text-sm font-medium text-gray-700 mb-1">Ruangan</label>
-                        <input type="text" id="ruangan" name="ruangan" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Contoh: Lab Komputer A / R. 201">
+                        <input type="text" id="ruangan" name="ruangan" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Contoh: Lab Komputer A / R. 201">
                     </div>
 
                     <div>
                         <label for="waktu_mulai" class="block text-sm font-medium text-gray-700 mb-1">Waktu Mulai</label>
-                        <input type="time" id="waktu_mulai" name="waktu_mulai" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                        <input type="time" id="waktu_mulai" name="waktu_mulai" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
                     </div>
 
                     <div>
                         <label for="waktu_selesai" class="block text-sm font-medium text-gray-700 mb-1">Waktu Selesai</label>
-                        <input type="time" id="waktu_selesai" name="waktu_selesai" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                        <input type="time" id="waktu_selesai" name="waktu_selesai" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
                     </div>
 
                     <div>
                         <label for="semester" class="block text-sm font-medium text-gray-700 mb-1">Semester</label>
-                        <input type="text" id="semester" name="semester" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Contoh: Genap 2024/2025">
+                        <input type="text" id="semester" name="semester" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Contoh: Genap 2024/2025">
                     </div>
                 </div>
 

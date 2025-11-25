@@ -42,37 +42,70 @@
             </button>
         </div>
 
-        <div class="space-y-4">
-            
-            <div class="grid grid-cols-10 gap-4 px-4 py-3 bg-gray-200 rounded-lg font-bold text-gray-700 text-sm shadow-sm">
-                <span class="col-span-2">Jadwal</span>
-                <span class="col-span-2">Waktu</span>
-                <span class="col-span-2">Dosen</span>
-                <span class="col-span-2">Asdos</span>
-                <span class="col-span-2 text-center">Aksi</span>
-            </div>
+                                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider w-12">
+                                No
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider w-40">
+                                Jadwal
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider w-48">
+                                Waktu
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider w-56">
+                                Dosen
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider w-24">
+                                Asdos_1
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider w-24">
+                                Asdos_2
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider w-40">
+                                Aksi
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-100">
+                        
+                        <!-- Contoh Baris Data 1: Asdos Terverifikasi -->
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                1
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                Basis Data (Kelas A)
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                Senin, 14:00 - 16:00
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-gray-900">Siti Aisyah (191101001)</div>
+                                <div class="text-sm text-gray-500">Dosen</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-gray-900">Dayat (191101001)</div>
+                                <div class="text-sm text-gray-500">Semester 6 / Lulus Matkul</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-gray-900">Ilham (191101001)</div>
+                                <div class="text-sm text-gray-500">Semester 4 / Lulus Matkul</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                <div class="space-x-2">
+                                    {{-- <button class="px-4 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition text-sm">Hapus</button> --}}
+                                    <a href="/Admin/editLaporan" class="px-4 py-1 bg-yellow-600 text-white rounded-md hover:bg-blue-700 transition text-sm">Edit</a>
+                                    <a href="/Admin/hapusLaporan" class="px-4 py-1 bg-red-600 text-white rounded-md hover:bg-blue-700 transition text-sm">Hapus</a>
+                                </div>
+                            </td>
+                        </tr>
 
-            <div class="grid grid-cols-10 gap-4 items-center bg-white shadow p-4 rounded-xl border hover:shadow-lg transition text-sm text-gray-700">
-                <span class="col-span-2 font-medium truncate">Basis Data (A)</span>
-                <span class="col-span-2 truncate">Senin, 10:00</span>
-                <span class="col-span-2 truncate">Dr. Ir. Widodo</span>
-                <span class="col-span-2 font-semibold truncate">Budi Santoso</span>
-                <div class="col-span-2 flex justify-center space-x-2">
-                    <a href="/Admin/editLaporan" class="px-3 py-1 bg-yellow-400 text-black rounded-md hover:bg-yellow-500 transition text-xs font-medium">Edit</a>
-                    <a href="/Admin/hapusLaporan" class="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition text-xs font-medium">Hapus</a>
-                </div>
-            </div>
-            
-            <div class="grid grid-cols-10 gap-4 items-center bg-white shadow p-4 rounded-xl border hover:shadow-lg transition text-sm text-gray-700">
-                <span class="col-span-2 font-medium truncate">Algoritma (C)</span>
-                <span class="col-span-2 truncate">Selasa, 13:00</span>
-                <span class="col-span-2 truncate">Prof. Lina</span>
-                <span class="col-span-2 font-semibold truncate">Siti Aisyah</span>
-                <div class="col-span-2 flex justify-center space-x-2">
-                    <a href="/Admin/editLaporan" class="px-3 py-1 bg-yellow-400 text-black rounded-md hover:bg-yellow-500 transition text-xs font-medium">Edit</a>
-                    <a href="/Admin/hapusLaporan" class="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition text-xs font-medium">Hapus</a>
-                </div>
-            </div>
+                        <!-- Tambahkan baris data lainnya di sini... -->
+
+                    </tbody>
+                </table>
             </div>
     </main>
 </div>

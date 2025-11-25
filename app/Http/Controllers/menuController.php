@@ -8,7 +8,7 @@ class menuController extends Controller
 {
     // login & register
     public function index(){
-        return view('login');
+        return view('welcome');
     }
     public function register(){
         return view('Mahasiswa/register');
@@ -70,8 +70,20 @@ class menuController extends Controller
     public function dataAsdos(){
         return view('Admin/dataAsdos');
     }
+    public function tambahAsdos(){
+            return view('Admin/crudDataPengguna/tambahAsdos');
+    }
+    public function editAsdos(){
+        return view('Admin/crudDataPengguna/editAsdos');
+    }
     public function dataCalonAsdos(){
         return view('Admin/dataCalonAsdos');
+    }
+    public function tambahCalonAsdos(){
+        return view('Admin/crudDataPengguna/tambahCalonAsdos');
+    }
+    public function editCalonAsdos(){
+        return view('Admin/crudDataPengguna/editCalonAsdos');
     }
     public function laporan(){
         return view('Admin/laporan');

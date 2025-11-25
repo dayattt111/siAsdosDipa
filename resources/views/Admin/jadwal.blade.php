@@ -41,41 +41,65 @@
             </div>
         </div>
 
-        {{-- <div class="space-y-4">
-            <div class="flex justify-between items-center bg-white shadow p-4 rounded-xl border hover:shadow-xl transition-transform hover:scale-[1.02]">
-                <span class="font-medium text-gray-700">Jadwal: Basis Data Kelas A (Dosen: Widodo)</span>
-                <div class="space-x-2">
-                    <button class="px-4 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition text-sm">Hapus</button>
-                    <a href="/Admin/kelolaJadwal/lihat/1" class="px-4 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-sm">Lihat</a>
-                </div>
-            </div> --}}
+                        <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider w-12">
+                                No
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider w-40">
+                                Jadwal
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider w-48">
+                                Mata Kuliah
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider w-56">
+                                Dosen
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider w-24">
+                                Asdos
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider w-40">
+                                Aksi
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-100">
+                        
+                        <!-- Contoh Baris Data 1: Asdos Terverifikasi -->
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                1
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-gray-900">Siti Aisyah (191101001)</div>
+                                <div class="text-sm text-gray-500">Semester 6 / Lulus Matkul</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                Basis Data (Kelas A)
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                Senin, 14:00 - 16:00
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center">
+                                <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                    Yes
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                <div class="space-x-2">
+                                    {{-- <button class="px-4 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition text-sm">Hapus</button> --}}
+                                    <a href="/Admin/lihatJadwal" class="px-4 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-sm">Lihat</a>
+                                    <a href="/Admin/editJadwal" class="px-4 py-1 bg-yellow-600 text-white rounded-md hover:bg-blue-700 transition text-sm">Edit</a>
+                                    <a href="/Admin/hapusJadwal" class="px-4 py-1 bg-red-600 text-white rounded-md hover:bg-blue-700 transition text-sm">Hapus</a>
+                                </div>
+                            </td>
+                        </tr>
 
-            {{-- <div class="flex justify-between items-center bg-white shadow p-4 rounded-xl border hover:shadow-xl transition-transform hover:scale-[1.02]">
-                <span class="font-medium text-gray-700">Jadwal: Algoritma Kelas C (Dosen: Lina)</span>
-                <div class="space-x-2">
-                    <button class="px-4 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition text-sm">Hapus</button>
-                    <a href="/Admin/kelolaJadwal/lihat/2" class="px-4 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-sm">Lihat</a>
-                </div>
-            </div>
+                        <!-- Tambahkan baris data lainnya di sini... -->
 
-            <div class="flex justify-between items-center bg-white shadow p-4 rounded-xl border hover:shadow-xl transition-transform hover:scale-[1.02]">
-                <span class="font-medium text-gray-700">Jadwal: Struktur Data Kelas B (Dosen: Rina)</span>
-                <div class="space-x-2">
-                    <button class="px-4 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition text-sm">Hapus</button>
-                    <a href="/Admin/kelolaJadwal/lihat/3" class="px-4 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-sm">Lihat</a>
-                </div>
-            </div> --}}
-            
-             <div class="flex justify-between items-center bg-white shadow p-4 rounded-xl border hover:shadow-xl transition-transform hover:scale-[1.02]">
-                <span class="font-medium text-gray-700">Jadwal: Komputasi Dasar Kelas A (Dosen: Jack)</span>
-                <div class="space-x-2">
-                    {{-- <button class="px-4 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition text-sm">Hapus</button> --}}
-                    <a href="/Admin/lihatJadwal" class="px-4 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-sm">Lihat</a>
-                    <a href="/Admin/editJadwal" class="px-4 py-1 bg-yellow-600 text-white rounded-md hover:bg-blue-700 transition text-sm">Edit</a>
-                    <a href="/Admin/hapusJadwal" class="px-4 py-1 bg-red-600 text-white rounded-md hover:bg-blue-700 transition text-sm">Hapus</a>
-                </div>
-            </div>
-        </div>
+                    </tbody>
+                </table>
 
         <a href="#" class="block text-right mt-4 text-blue-600 hover:underline text-sm">Show more</a>
 
