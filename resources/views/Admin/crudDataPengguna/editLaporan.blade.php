@@ -30,7 +30,7 @@
         <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-200">
             <h1 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-3">Edit Laporan: Basis Data (A), 15 Nov 2025</h1>
             
-            <form action="/Admin/laporan/1" method="POST" class="space-y-6">
+            <form action="/Admin/laporan" method="POST" class="space-y-6">
                 @csrf
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     
@@ -45,23 +45,23 @@
 
                     <div>
                         <label for="tanggal_laporan" class="block text-sm font-medium text-gray-700 mb-1">Tanggal Laporan</label>
-                        <input type="date" id="tanggal_laporan" name="tanggal_laporan" value="2025-11-15" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                        <input type="date" id="tanggal_laporan" name="tanggal_laporan" value="2025-11-15" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
                     </div>
 
                     <div>
                         <label for="kehadiran" class="block text-sm font-medium text-gray-700 mb-1">Jumlah Kehadiran Mhs</label>
-                        <input type="number" id="kehadiran" name="kehadiran" value="25" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                        <input type="number" id="kehadiran" name="kehadiran" value="25" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
                     </div>
 
                     <div>
                         <label for="topik" class="block text-sm font-medium text-gray-700 mb-1">Topik Bahasan</label>
-                        <input type="text" id="topik" name="topik" value="Normalisasi Basis Data" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                        <input type="text" id="topik" name="topik" value="Normalisasi Basis Data" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
                     </div>
                 </div>
 
                 <div>
                     <label for="deskripsi" class="block text-sm font-medium text-gray-700 mb-1">Detail Kegiatan Asistensi</label>
-                    <textarea id="deskripsi" name="deskripsi" rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">Mahasiswa berhasil memahami konsep normalisasi hingga 3NF dan mengerjakan contoh studi kasus.</textarea>
+                    <textarea id="deskripsi" name="deskripsi" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">Mahasiswa berhasil memahami konsep normalisasi hingga 3NF dan mengerjakan contoh studi kasus.</textarea>
                 </div>
 
                 <div class="flex justify-end space-x-3 pt-6 border-t mt-6 border-gray-100">

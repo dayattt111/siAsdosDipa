@@ -37,7 +37,7 @@
                     
                     <div>
                         <label for="jadwal_id" class="block text-sm font-medium text-gray-700 mb-1">Pilih Jadwal</label>
-                        <select id="jadwal_id" name="jadwal_id" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 bg-white">
+                        <select id="jadwal_id" name="jadwal_id"  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 bg-white">
                             <option value="" disabled selected>-- Pilih Jadwal Asistensi --</option>
                             <option value="1">Basis Data (A) - Senin, 10:00</option>
                             <option value="2">Algoritma (C) - Selasa, 13:00</option>
@@ -46,23 +46,23 @@
 
                     <div>
                         <label for="tanggal_laporan" class="block text-sm font-medium text-gray-700 mb-1">Tanggal Laporan</label>
-                        <input type="date" id="tanggal_laporan" name="tanggal_laporan" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                        <input type="date" id="tanggal_laporan" name="tanggal_laporan"  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
                     </div>
 
                     <div>
                         <label for="kehadiran" class="block text-sm font-medium text-gray-700 mb-1">Jumlah Kehadiran Mhs</label>
-                        <input type="number" id="kehadiran" name="kehadiran" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Contoh: 25">
+                        <input type="number" id="kehadiran" name="kehadiran"  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Contoh: 25">
                     </div>
 
                     <div>
                         <label for="topik" class="block text-sm font-medium text-gray-700 mb-1">Topik Bahasan</label>
-                        <input type="text" id="topik" name="topik" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Contoh: Normalisasi Basis Data">
+                        <input type="text" id="topik" name="topik"  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Contoh: Normalisasi Basis Data">
                     </div>
                 </div>
 
                 <div>
                     <label for="deskripsi" class="block text-sm font-medium text-gray-700 mb-1">Detail Kegiatan Asistensi</label>
-                    <textarea id="deskripsi" name="deskripsi" rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Jelaskan detail kegiatan, masalah yang dihadapi, dsb."></textarea>
+                    <textarea id="deskripsi" name="deskripsi" rows="4"  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Jelaskan detail kegiatan, masalah yang dihadapi, dsb."></textarea>
                 </div>
 
                 <div class="flex justify-end space-x-3 pt-6 border-t mt-6 border-gray-100">

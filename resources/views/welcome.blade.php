@@ -64,8 +64,8 @@
       {{-- Mahasiswa, Dosen, Admin --}}
 
       {{-- <form method="post" action="/jadwalMhs"> --}}
-      {{-- <form method="post" action="/Dosen"> --}}
-      <form method="post" action="/adminAsdos">
+      <form method="post" action="/Dosen">
+      {{-- <form method="post" action="/adminAsdos"> --}}
         @csrf
 
         <div>

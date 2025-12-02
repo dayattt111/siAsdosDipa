@@ -41,7 +41,7 @@
                 <p class="text-sm text-red-700">Topik: Normalisasi Basis Data</p>
             </div>
             
-            <form action="/Admin/laporan/1" method="POST" class="flex justify-center space-x-4">
+            <form action="/Admin/laporan" method="POST" class="flex justify-center space-x-4">
                 @csrf
                 <a href="/Admin/laporan" class="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition font-medium">Batal</a>
                 

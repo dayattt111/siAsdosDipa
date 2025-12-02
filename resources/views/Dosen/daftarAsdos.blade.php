@@ -35,85 +35,80 @@
         </div>
     </aside>
 
-    <main class="flex-1 p-8">
-        <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-2xl border border-gray-200">
-            <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 border-b pb-3">Daftar Asisten Dosen Mata Kuliah Anda</h1>
-            
-            <div class="mb-6 p-4 bg-gray-50 rounded-xl border border-gray-200">
-                <form action="/Dosen" method="post" class="space-y-4 md:space-y-0 md:flex md:items-end md:gap-4">
-                    @csrf
-                    <div class="flex-grow">
-                        <label for="search" class="block text-sm font-medium text-gray-700 mb-1">Cari Nama Asdos / Mata Kuliah</label>
-                        <div class="relative">
-                            <input type="text" id="search" name="search" placeholder="Contoh: Budi atau Komputasi" class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
-                            <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                        </div>
-                    </div>
+    <main class="flex-1 p-8 bg-gray-50">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6">Jadwal Asisten Dosen</h1>
 
-                    <div class="w-full md:w-auto md:min-w-[150px]">
-                        <label for="filter_matkul" class="block text-sm font-medium text-gray-700 mb-1">Filter Mata Kuliah</label>
-                        <select id="filter_matkul" name="filter_matkul" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
-                            <option value="">Semua Mata Kuliah</option>
-                            <option value="komputasi">Komputasi</option>
-                            <option value="aljabar">Aljabar Linier</option>
-                            <option value="struktur">Struktur Data</option>
-                            </select>
-                    </div>
-
-                    <button type="submit" class="w-full md:w-auto px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium shadow-md">
-                        Terapkan
-                    </button>
-
-                </form>
-            </div>
-            
-            <div class="space-y-4">
-                
-                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-5 bg-white rounded-xl shadow-lg border-l-4 border-blue-500 hover:shadow-xl transition duration-300">
-                    <div class="mb-3 sm:mb-0">
-                        <p class="text-lg font-semibold text-gray-800">Jadwal Komputasi</p>
-                        <p class="text-sm text-gray-600">Asisten Dosen: **Budi Santoso**</p>
-                    </div>
-                    <a href="https://wa.me/6281234567890?text=Yth.%20Budi,%20Saya%20Dosen%20Anda.%20Mohon%20konfirmasi%20jadwal%20asistensi%20Komputasi." 
-                       target="_blank" 
-                       class="flex items-center px-4 py-2 bg-green-500 text-white text-sm font-medium rounded-full shadow-md hover:bg-green-600 transition duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" viewBox="0 0 20 20" fill="currentColor"><path d="M17.43 2.93A10 10 0 002.58 17.42l-.74 2.5a.5.5 0 00.67.67l2.5-.74A10 10 0 0017.43 2.93zM10 18a8 8 0 110-16 8 8 0 010 16zm-1.5-6.5a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5zm3 0a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5z"/></svg>
-                        Hubungi via WA
-                    </a>
-                </div> 
-
-                {{-- <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-5 bg-white rounded-xl shadow-lg border-l-4 border-blue-500 hover:shadow-xl transition duration-300">
-                    <div class="mb-3 sm:mb-0">
-                        <p class="text-lg font-semibold text-gray-800">Jadwal Aljabar Linier</p>
-                        <p class="text-sm text-gray-600">Asisten Dosen: **Sita Dewi**</p>
-                    </div>
-                    <a href="https://wa.me/6281234567891?text=Yth.%20Sita,%20Saya%20Dosen%20Anda.%20Mohon%20konfirmasi%20jadwal%20asistensi%20Aljabar%20Linier." 
-                       target="_blank" 
-                       class="flex items-center px-4 py-2 bg-green-500 text-white text-sm font-medium rounded-full shadow-md hover:bg-green-600 transition duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" viewBox="0 0 20 20" fill="currentColor"><path d="M17.43 2.93A10 10 0 002.58 17.42l-.74 2.5a.5.5 0 00.67.67l2.5-.74A10 10 0 0017.43 2.93zM10 18a8 8 0 110-16 8 8 0 010 16zm-1.5-6.5a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5zm3 0a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5z"/></svg>
-                        Hubungi via WA
-                    </a>
-                </div>
-
-                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-5 bg-white rounded-xl shadow-lg border-l-4 border-blue-500 hover:shadow-xl transition duration-300">
-                    <div class="mb-3 sm:mb-0">
-                        <p class="text-lg font-semibold text-gray-800">Jadwal Struktur Data</p>
-                        <p class="text-sm text-gray-600">Asisten Dosen: **Joni Iskandar**</p>
-                    </div>
-                    <a href="https://wa.me/6281234567892?text=Yth.%20Joni,%20Saya%20Dosen%20Anda.%20Mohon%20konfirmasi%20jadwal%20asistensi%20Struktur%20Data." 
-                       target="_blank" 
-                       class="flex items-center px-4 py-2 bg-green-500 text-white text-sm font-medium rounded-full shadow-md hover:bg-green-600 transition duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" viewBox="0 0 20 20" fill="currentColor"><path d="M17.43 2.93A10 10 0 002.58 17.42l-.74 2.5a.5.5 0 00.67.67l2.5-.74A10 10 0 0017.43 2.93zM10 18a8 8 0 110-16 8 8 0 010 16zm-1.5-6.5a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5zm3 0a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5z"/></svg>
-                        Hubungi via WA
-                    </a>
-                </div>  --}}
-                
-            </div>
-
-            <div class="flex justify-end mt-6 pt-3 border-t border-gray-100">
-                <a href="/Dosen/semuaAsdos" class="text-sm font-medium text-blue-600 hover:text-blue-800 transition">Lihat Semua >></a>
+        <div class="flex justify-between items-center mb-6">
+            <div class="flex items-center bg-white px-4 py-2 rounded-lg shadow border border-gray-200 w-72">
+                <span class="text-gray-500 mr-2">🔍</span>
+                <input type="text" placeholder="cari pendaftar / jadwal" class="flex-1 outline-none text-sm" />
             </div>
         </div>
+
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider w-12">
+                                No
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider w-40">
+                                Nama Asdos
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider w-48">
+                                Mata Kuliah
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider w-56">
+                                Jadwal
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider w-24">
+                                Verifikasi
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider w-40">
+                                Aksi
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-100">
+                        
+                        <!-- Contoh Baris Data 1: Asdos Terverifikasi -->
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                1
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-gray-900">Siti Aisyah (191101001)</div>
+                                <div class="text-sm text-gray-500">Semester 6 / Lulus Matkul</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                Basis Data (Kelas A)
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                Senin, 14:00 - 16:00
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center">
+                                <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                    Yes
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                <div class="flex items-center justify-center space-x-2">
+                                    <a href="/Dosen/detailAsdos" class="px-3 py-1.5 bg-blue-400 text-gray-800 rounded-md hover:bg-blue-500 transition text-xs font-semibold shadow-sm">
+                                        Detail
+                                    </a>
+                                    <a href="/Dosen" class="px-3 py-1.5 bg-yellow-400 text-gray-800 rounded-md hover:bg-blue-500 transition text-xs font-semibold shadow-sm">
+                                        Hubungi
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Tambahkan baris data lainnya di sini... -->
+
+                    </tbody>
+                </table>
+
+        <a href="#" class="block text-right mt-4 text-blue-600 hover:underline text-sm">Show more</a>
+
     </main>
 </div>
 

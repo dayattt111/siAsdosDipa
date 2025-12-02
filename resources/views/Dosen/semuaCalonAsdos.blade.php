@@ -50,7 +50,7 @@
                         <a href="/Dosen/komentar/232220" class="px-3 py-2 bg-yellow-500 text-white text-sm rounded-lg hover:bg-yellow-600 transition font-medium">
                             Komentar
                         </a>
-                        <a href="/Dosen/detailCalonAsdos/232220" class="px-3 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition font-medium">
+                        <a href="/Dosen/detail" class="px-3 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition font-medium">
                             Detail
                         </a>
                     </div>

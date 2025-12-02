@@ -74,7 +74,7 @@
                         <p class="text-lg font-semibold text-gray-800">Jadwal Komputasi</p>
                         <p class="text-sm text-gray-600">Asisten Dosen: **Budi Santoso**</p>
                     </div>
-                    <a href="https://wa.me/6281234567890?text=Yth.%20Budi,%20Saya%20Dosen%20Anda.%20Mohon%20konfirmasi%20jadwal%20asistensi%20Komputasi." 
+                    <a href="#" 
                        target="_blank" 
                        class="flex items-center px-4 py-2 bg-green-500 text-white text-sm font-medium rounded-full shadow-md hover:bg-green-600 transition duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" viewBox="0 0 20 20" fill="currentColor"><path d="M17.43 2.93A10 10 0 002.58 17.42l-.74 2.5a.5.5 0 00.67.67l2.5-.74A10 10 0 0017.43 2.93zM10 18a8 8 0 110-16 8 8 0 010 16zm-1.5-6.5a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5zm3 0a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5z"/></svg>
@@ -87,7 +87,7 @@
                         <p class="text-lg font-semibold text-gray-800">Jadwal Aljabar Linier</p>
                         <p class="text-sm text-gray-600">Asisten Dosen: **Sita Dewi**</p>
                     </div>
-                    <a href="https://wa.me/6281234567891?text=Yth.%20Sita,%20Saya%20Dosen%20Anda.%20Mohon%20konfirmasi%20jadwal%20asistensi%20Aljabar%20Linier." 
+                    <a href="#" 
                        target="_blank" 
                        class="flex items-center px-4 py-2 bg-green-500 text-white text-sm font-medium rounded-full shadow-md hover:bg-green-600 transition duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" viewBox="0 0 20 20" fill="currentColor"><path d="M17.43 2.93A10 10 0 002.58 17.42l-.74 2.5a.5.5 0 00.67.67l2.5-.74A10 10 0 0017.43 2.93zM10 18a8 8 0 110-16 8 8 0 010 16zm-1.5-6.5a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5zm3 0a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5z"/></svg>
