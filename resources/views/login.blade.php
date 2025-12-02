@@ -71,9 +71,9 @@
 <div class="login-box">
     <h2>Login</h2>
 
-    {{-- <form method="POST" action="/adminAsdos"> --}}
-    {{-- <form method="POST" action="/adminAsdos"> --}}
-    <form method="POST" action="login">
+      {{-- <form method="post" action="/jadwalMhs"> --}}
+      <form method="post" action="/Dosen">
+      {{-- <form method="post" action="/adminAsdos"> --}}
         @csrf
 
         {{-- <label>Username</label> --}}
