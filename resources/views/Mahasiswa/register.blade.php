@@ -50,9 +50,9 @@
       <center><h1>Register</h1></center>
       {{-- <p class="desc">Silakan buat akun baru untuk melanjutkan.</p> --}}
 
-      {{-- <form method="POST" action="/jadwalMhs"> --}}
+      <form method="POST" action="/jadwalMhs">
       {{-- <form method="POST" action="/daftarAsdos"> --}}
-      <form method="POST" action="/adminAsdos">
+      {{-- <form method="POST" action="/adminAsdos"> --}}
         @csrf
 
         <div class="mb-3">
