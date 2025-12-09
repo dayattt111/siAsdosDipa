@@ -14,9 +14,7 @@ class userController extends Controller
 
     public function auth(Request $request)
     {
-        $user = LoginModel::where('username', $request->username)
-                          ->where('password', $request->password)
-                          ->first();
+        $user = LoginModel::where('username', $request->username)->where('password', $request->password)->first();
 
         if (!$user) {
             return "Login gagal!";
