@@ -58,7 +58,7 @@
 <body>
   <div class="wrap">
     <div class="card">
-      <center><h1>Login</h1></center>
+      <center><h1>Loginn</h1></center>
       {{-- <p class="desc">Silakan Login menggunakan email dan kata sandi Anda.</p> --}}
 
       {{-- Mahasiswa, Dosen, Admin --}}

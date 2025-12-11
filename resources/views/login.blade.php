@@ -70,12 +70,12 @@
 
         <div>
           {{-- <label for="email">Email</label> --}}
-          <input id="email" type="email" name="email" value="" placeholder="Masukkan email">
+          <input id="email" type="email" name="email" value="" required placeholder="Masukkan email">
         </div>
 
         <div>
           {{-- <label for="password">Kata Sandi</label> --}}
-          <input id="password" type="password" name="password" placeholder="Masukkan kata sandi">
+          <input id="password" type="password" name="password" required placeholder="Masukkan kata sandi">
         </div>
 
         <button class="btn" type="submit">Login</button>

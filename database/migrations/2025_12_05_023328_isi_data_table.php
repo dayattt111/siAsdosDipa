@@ -14,18 +14,21 @@ return new class extends Migration
         DB::table('users')->insert([
             'nama_user' => 'admin',
             'username' => 'admin',
+            'email' => 'admin@mail.com',
             'password' => Hash::make('admin123'),
             'role' => 'admin',
         ]);
         DB::table('users')->insert([
             'nama_user' => 'dosen',
             'username' => 'dosen',
+            'email' => 'dosen@mail.com',
             'password' => Hash::make('dosen123'),
             'role' => 'dosen',
         ]);
         DB::table('users')->insert([
             'nama_user' => 'mahasiswa',
             'username' => 'mahasiswa',
+            'email' => 'mahasiswa@mail.com',
             'password' => Hash::make('mahasiswa123'),
             'role' => 'mahasiswa',
         ]);

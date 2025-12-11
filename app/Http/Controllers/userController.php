@@ -14,7 +14,7 @@ class userController extends Controller
 
     public function auth(Request $request)
     {
-        $user = LoginModel::where('username', $request->username)->where('password', $request->password)->first();
+        $user = LoginModel::where('email', $request->email)->where('password', $request->password)->first();
 
         if (!$user) {
             return "Login gagal!";
@@ -22,14 +22,20 @@ class userController extends Controller
 
         if ($user->role === LoginModel::ROLE_ADMIN) {
             return view('Admin/dataAsdos');
+        }else{
+            return Redirect::back()->withErrors('test');
         }
 
         if ($user->role === LoginModel::ROLE_DOSEN) {
             return view('Dosen/daftarAsdos');
+        }else{
+            return Redirect::back()->withErrors('test');
         }
 
         if ($user->role === LoginModel::ROLE_MAHASISWA) {
             return view('Mahasiswa/jadwalMhs');
+        }else{
+            return Redirect::back()->withErrors('test');
         }
 
         return "Login berhasil!";

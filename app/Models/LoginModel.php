@@ -15,6 +15,7 @@ class LoginModel extends Model
     protected $fillable = [
         'nama_user',
         'username',
+        'email',
         'password',
         'role'
     ];
