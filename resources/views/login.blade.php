@@ -65,7 +65,6 @@
             </div>
         @endif
       <form method="post" action="/login">
-      {{-- <form method="post" action="/adminAsdos"> --}}
         @csrf
 
         <div>
