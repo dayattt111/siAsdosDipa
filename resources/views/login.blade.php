@@ -69,13 +69,17 @@
         @csrf
 
         <div>
-          {{-- <label for="email">Email</label> --}}
-          <input id="email" type="email" name="email" value=""  placeholder="Masukkan email">
+          <input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="Masukkan email">
+          @error('email')
+            <div class="error">{{ $message }}</div>
+          @enderror
         </div>
 
         <div>
-          {{-- <label for="password">Kata Sandi</label> --}}
-          <input id="password" type="password" name="password"  placeholder="Masukkan kata sandi">
+          <input id="password" type="password" name="password" placeholder="Masukkan kata sandi">
+          @error('password')
+            <div class="error">{{ $message }}</div>
+          @enderror
         </div>
 
         <button class="btn" type="submit">Login</button>
