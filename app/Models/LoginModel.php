@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class LoginModel extends Model
 {
-    protected $table = 'data_user';
+    protected $table = 'users';
     
     const ROLE_DOSEN = 'dosen';
     const ROLE_MAHASISWA = 'mahasiswa';

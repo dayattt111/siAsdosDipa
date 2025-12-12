@@ -3,12 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\menuController;
 use App\Http\Controllers\userController;
+use App\Http\Controllers\LoginController;
 
 // login and regist
 Route::get('/', [menuController::class, 'index']);
 Route::get('/register', [menuController::class, 'register']);
 Route::post('/logout', [menuController::class, 'logout']);
-Route::post('/login', [userController::class, 'auth']);
+Route::post('/login', [LoginController::class, 'proses_login']);
 
 // mahasswa
 Route::post('/jadwalMhs', [menuController::class, 'sendJadwalMhs']);
@@ -18,12 +19,12 @@ Route::get('/jadwalMhs/status', [menuController::class, 'cekStatus']);
 Route::post('/jadwalMhs/status', [menuController::class, 'kirimStatus']);
 
 // Dosen
-Route::post('/Dosen', [userController::class, 'auth']);
-Route::get('/Dosen', [userController::class, 'auth']);
-Route::get('/Dosen/cekAsdos', [userController::class, 'daftarAsdos']);
-Route::get('/Dosen/detailAsdos', [userController::class, 'DosenDetailAsdos']);
-Route::post('/Dosen/detailAsdos', [userController::class, 'DosenDetailAsdos']);
-Route::get('/Dosen/semuaAsdos', [userController::class, 'semuaAsdos']);
+Route::post('/Dosen', [menuController::class, 'auth']);
+Route::get('/Dosen', [menuController::class, 'auth']);
+Route::get('/Dosen/cekAsdos', [menuController::class, 'daftarAsdos']);
+Route::get('/Dosen/detailAsdos', [menuController::class, 'DosenDetailAsdos']);
+Route::post('/Dosen/detailAsdos', [menuController::class, 'DosenDetailAsdos']);
+Route::get('/Dosen/semuaAsdos', [menuController::class, 'semuaAsdos']);
 Route::get('/Dosen/cekCalonAsdos', [menuController::class, 'daftarCalonAsdos']);
 Route::post('/Dosen/cekCalonAsdos', [menuController::class, 'daftarCalonAsdos']);
 Route::get('/Dosen/detail', [menuController::class, 'detailCalonAsdos']);
