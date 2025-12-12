@@ -8,7 +8,8 @@ use App\Http\Controllers\LoginController;
 // login and regist
 Route::get('/', [menuController::class, 'index']);
 Route::get('/register', [menuController::class, 'register']);
-Route::post('/logout', [menuController::class, 'logout']);
+// Route::post('/logout', [menuController::class, 'logout']);
+Route::get('/logout', [LoginController::class, 'logout']);
 Route::post('/login', [LoginController::class, 'proses_login']);
 
 // mahasswa

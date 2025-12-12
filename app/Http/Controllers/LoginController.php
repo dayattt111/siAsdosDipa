@@ -55,6 +55,11 @@ public function proses_login(Request $request)
     }
 
     return back()->with('error', 'Role user tidak dikenali!');
-}
+    }
+    public function logout(Request $request)
+    {
+        session()->flush();
+        return redirect('/login')->with('success', 'Berhasil logout!');
+    }
 
 }
