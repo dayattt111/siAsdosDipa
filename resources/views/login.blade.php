@@ -59,11 +59,11 @@
   <div class="wrap">
     <div class="card">
       <center><h1>Login</h1></center>
-      {{-- <p class="desc">Silakan Login menggunakan email dan kata sandi Anda.</p> --}}
-
-      {{-- Mahasiswa, Dosen, Admin --}}
-
-      {{-- <form method="post" action="/jadwalMhs"> --}}
+        @if (session('error'))
+            <div class="error" style="color:#b91c1c; background:#fee2e2; padding:10px; border-radius:6px; margin-bottom:12px; text-align:center;">
+                {{ session('error') }}
+            </div>
+        @endif
       <form method="post" action="/login">
       {{-- <form method="post" action="/adminAsdos"> --}}
         @csrf

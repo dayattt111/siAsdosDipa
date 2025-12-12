@@ -10,32 +10,36 @@ class LoginController extends Controller
 {
 public function proses_login(Request $request)
 {
-    // Validasi biasa
     $request->validate([
         'email' => 'required|email',
         'password' => 'required'
+    ], [
+        'email.required' => 'Email wajib diisi!',
+        'email.email' => 'Format email tidak valid!',
+        'password.required' => 'Password wajib diisi!'
     ]);
 
-    // Cari user berdasarkan email
     $user = LoginModel::where('email', $request->email)->first();
 
-    // cek user & password
-    if (!$user || !Hash::check($request->password, $user->password)) {
-        return back()->with('error', 'Email atau Password salah!');
+    if (!$user) {
+        return back()->with('error', 'Email tidak terdaftar!')->withInput();
     }
 
-    // Redirect langsung sesuai role (TANPA SESSION)
+    if (!Hash::check($request->password, $user->password)) {
+        return back()->with('error', 'Password salah!')->withInput();
+    }
+
     if ($user->role === 'admin') {
         return redirect('/adminAsdos');
     } 
-    else if ($user->role === 'dosen') {
+    elseif ($user->role === 'dosen') {
         return redirect('/Dosen');
     }
-    else if( $user->role === 'dosen'){
+    elseif ($user->role === 'mahasiswa') {
         return redirect('/jadwalMhs');
     }
-    else{
-        return back()->with('error', 'Role user tidak dikenali!');
-    }
-    }
+
+    return back()->with('error', 'Role user tidak dikenali!');
+}
+
 }
