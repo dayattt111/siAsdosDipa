@@ -20,8 +20,8 @@ Route::get('/jadwalMhs/status', [menuController::class, 'cekStatus']);
 Route::post('/jadwalMhs/status', [menuController::class, 'kirimStatus']);
 
 // Dosen
-Route::post('/Dosen', [menuController::class, 'auth']);
-Route::get('/Dosen', [menuController::class, 'auth']);
+Route::post('/Dosen', [menuController::class, 'indexDosen']);
+Route::get('/Dosen', [menuController::class, 'indexDosen']);
 Route::get('/Dosen/cekAsdos', [menuController::class, 'daftarAsdos']);
 Route::get('/Dosen/detailAsdos', [menuController::class, 'DosenDetailAsdos']);
 Route::post('/Dosen/detailAsdos', [menuController::class, 'DosenDetailAsdos']);
