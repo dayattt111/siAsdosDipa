@@ -13,7 +13,12 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        \Illuminate\Database\Console\Migrations\MigrateCommand::class,
+        \Illuminate\Database\Console\Migrations\MigrationMakeCommand::class,
+        \Illuminate\Database\Console\Migrations\RefreshCommand::class,
+        \Illuminate\Database\Console\Migrations\ResetCommand::class,
+        \Illuminate\Database\Console\Migrations\RollbackCommand::class,
+        \Illuminate\Database\Console\Migrations\StatusCommand::class,
     ];
 
     /**
@@ -36,6 +41,9 @@ class Kernel extends ConsoleKernel
     {
         $this->load(__DIR__.'/Commands');
 
-        require base_path('routes/console.php');
+        if (is_file(base_path('routes/console.php'))) {
+            require base_path('routes/console.php');
+        }
     }
 }
+
