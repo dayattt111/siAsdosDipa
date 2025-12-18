@@ -8,20 +8,6 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 class Kernel extends ConsoleKernel
 {
     /**
-     * The Artisan commands provided by your application.
-     *
-     * @var array
-     */
-    protected $commands = [
-        \Illuminate\Database\Console\Migrations\MigrateCommand::class,
-        \Illuminate\Database\Console\Migrations\MigrationMakeCommand::class,
-        \Illuminate\Database\Console\Migrations\RefreshCommand::class,
-        \Illuminate\Database\Console\Migrations\ResetCommand::class,
-        \Illuminate\Database\Console\Migrations\RollbackCommand::class,
-        \Illuminate\Database\Console\Migrations\StatusCommand::class,
-    ];
-
-    /**
      * Define the application's command schedule.
      *
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
@@ -45,5 +31,20 @@ class Kernel extends ConsoleKernel
             require base_path('routes/console.php');
         }
     }
+
+    /**
+     * Get the Artisan application instance.
+     *
+     * @return \Illuminate\Console\Application
+     */
+    protected function getArtisan()
+    {
+        if (is_null($this->artisan)) {
+            return $this->artisan = parent::getArtisan();
+        }
+
+        return $this->artisan;
+    }
 }
+
 

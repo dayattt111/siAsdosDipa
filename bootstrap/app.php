@@ -43,6 +43,34 @@ $app->singleton(
 
 /*
 |--------------------------------------------------------------------------
+| Load The Configuration
+|--------------------------------------------------------------------------
+|
+| Next we will load the configuration array. This gets the values in
+| from the configuration files and prepares them all for use by Laravel
+| as well as any packages or applications in the container.
+|
+*/
+
+$app->instance('config', new Illuminate\Config\Repository());
+
+/*
+|--------------------------------------------------------------------------
+| Register Service Providers
+|--------------------------------------------------------------------------
+|
+| Register all of the configured service providers for this application
+| and load them into the application instance. We'll register the core
+| providers by default and register any custom providers afterwards.
+|
+*/
+
+foreach (require base_path('bootstrap/providers.php') as $provider) {
+    $app->register($provider);
+}
+
+/*
+|--------------------------------------------------------------------------
 | Return The Application
 |--------------------------------------------------------------------------
 |
