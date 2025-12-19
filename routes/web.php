@@ -4,22 +4,25 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\menuController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\EditProfileController;
 
-// login and regist
 Route::get('/', [menuController::class, 'index']);
-Route::get('/register', [menuController::class, 'register']);
-// Route::post('/logout', [menuController::class, 'logout']);
-Route::get('/logout', [menuController::class, 'logout']);
+Route::get('/login', [LoginController::class, 'form']);
 Route::post('/login', [LoginController::class, 'proses_login']);
+Route::get('/register', [RegisterController::class, 'form']);
+Route::post('/register', [RegisterController::class, 'proses']);
+Route::get('/logout', [LoginController::class, 'proses_logout']);
 
-// mahasswa
+Route::get('/profile', [EditProfileController::class, 'form']);
+Route::post('/profile', [EditProfileController::class, 'proses']);
+
 Route::post('/jadwalMhs', [menuController::class, 'sendJadwalMhs']);
 Route::get('/jadwalMhs', [menuController::class, 'jadwalMhs']);
 Route::get('/jadwalMhs/uploadDocs', [menuController::class, 'uploadDocs']);
 Route::get('/jadwalMhs/status', [menuController::class, 'cekStatus']);
 Route::post('/jadwalMhs/status', [menuController::class, 'kirimStatus']);
 
-// Dosen
 Route::post('/Dosen', [menuController::class, 'indexDosen']);
 Route::get('/Dosen', [menuController::class, 'indexDosen']);
 Route::get('/Dosen/cekAsdos', [menuController::class, 'daftarAsdos']);
@@ -34,7 +37,6 @@ Route::get('/Dosen/semuaCalonAsdos', [menuController::class, 'semuaCalonAsdos'])
 Route::get('/Dosen/komentar', [menuController::class, 'komentarDosen']);
 Route::post('/Dosen/kirimKomentar', [menuController::class, 'kirimKomentarDosen']);
 
-// Admin
 Route::post('/adminAsdos', [menuController::class,'indexAdmin']);
 Route::get('/adminAsdos', [menuController::class,'indexAdmin']);
 Route::get('Admin/Asdos', [menuController::class,'dataAsdos']);
