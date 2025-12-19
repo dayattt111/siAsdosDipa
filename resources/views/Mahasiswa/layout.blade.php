@@ -159,7 +159,6 @@
       </div>
       <ul class="sidebar-menu">
         <li><a href="/jadwalMhs" @if(request()->path() === 'jadwalMhs') class="active" @endif>Jadwal Asdos</a></li>
-        <li><a href="/jadwalMhs/uploadDocs" @if(request()->path() === 'jadwalMhs/uploadDocs') class="active" @endif>Ajukan Asdos</a></li>
         <li><a href="/jadwalMhs/status" @if(request()->path() === 'jadwalMhs/status') class="active" @endif>Status Seleksi</a></li>
         <li><a href="/profile" @if(request()->path() === 'profile') class="active" @endif>Edit Profile</a></li>
         <li><a href="/logout" class="btn-logout" style="color:#fff">Logout</a></li>
