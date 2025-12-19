@@ -11,18 +11,17 @@ class LoginController extends Controller
 public function proses_login(Request $request)
 {
     $request->validate([
-        'email' => 'required|email',
+        'nim' => 'required',
         'password' => 'required'
     ], [
-        'email.required' => 'Email wajib diisi!',
-        'email.email' => 'Format email tidak valid!',
+        'nim.required' => 'NIM wajib diisi!',
         'password.required' => 'Password wajib diisi!'
     ]);
 
-    $user = LoginModel::where('email', $request->email)->first();
+    $user = LoginModel::where('nim', $request->nim)->first();
 
     if (!$user) {
-        return back()->with('error', 'Email tidak terdaftar!')->withInput();
+        return back()->with('error', 'NIM tidak terdaftar!')->withInput();
     }
 
     if (!Hash::check($request->password, $user->password)) {
@@ -32,7 +31,7 @@ public function proses_login(Request $request)
     if ($user->role === 'admin') {
     session([
         'user_id' => $user->id,
-        'user_email' => $user->email,
+        'user_nim' => $user->nim,
         'user_role' => $user->role
     ]);
         return redirect('/adminAsdos');
@@ -40,7 +39,7 @@ public function proses_login(Request $request)
     elseif ($user->role === 'dosen') {
         session([
             'user_id' => $user->id,
-            'user_email' => $user->email,
+            'user_nim' => $user->nim,
             'user_role' => $user->role
         ]);
         return redirect('/Dosen');
@@ -48,7 +47,7 @@ public function proses_login(Request $request)
     elseif ($user->role === 'mahasiswa') {
         session([
             'user_id' => $user->id,
-            'user_email' => $user->email,
+            'user_nim' => $user->nim,
             'user_role' => $user->role
         ]);
         return redirect('/jadwalMhs');

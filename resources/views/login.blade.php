@@ -28,7 +28,7 @@
     h1{margin:0 0 14px;font-size:20px;color:#111}
     .desc{margin:0 0 18px;color:#666;font-size:14px}
     label{display:block;font-size:13px;color:#333;margin-bottom:6px}
-    input[type="email"], input[type="password"]{
+    input[type="text"], input[type="email"], input[type="password"]{
       width:100%;
       padding:10px 12px;
       border:1px solid #d7dbe0;
@@ -68,8 +68,8 @@
         @csrf
 
         <div>
-          <input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="Masukkan email">
-          @error('email')
+          <input id="nim" type="text" name="nim" value="{{ old('nim') }}" placeholder="Masukkan NIM">
+          @error('nim')
             <div class="error">{{ $message }}</div>
           @enderror
         </div>
