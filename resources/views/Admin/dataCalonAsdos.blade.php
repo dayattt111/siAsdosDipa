@@ -25,7 +25,7 @@
         </nav>
 
         <div class="p-4 border-t border-gray-200">
-            <a href="/" class="block w-full text-center bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition">Logout</a>
+            <a href="/logout" class="block w-full text-center bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition">Logout</a>
         </div>
     </aside>
 

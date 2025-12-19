@@ -57,7 +57,7 @@ public function proses_login(Request $request)
     }
     public function logout(Request $request)
     {
-        $this->clearSession();
+        $this->flush();
         return redirect('/login')->with('success', 'Berhasil logout!');
     }
 

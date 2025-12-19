@@ -11,6 +11,7 @@ Route::get('/register', [menuController::class, 'register']);
 // Route::post('/logout', [menuController::class, 'logout']);
 Route::get('/logout', [menuController::class, 'logout']);
 Route::post('/login', [LoginController::class, 'proses_login']);
+Route::post('/logout', [menuController::class, 'logout']);
 
 // mahasswa
 Route::post('/jadwalMhs', [menuController::class, 'sendJadwalMhs']);
