@@ -14,7 +14,7 @@ class menuController extends Controller
         return view('Mahasiswa/register');
     }
     public function logout(){
-        $this->clearSession();
+        session()->flush();
         return redirect('/login')->with('success', 'Berhasil logout!');
     }
 

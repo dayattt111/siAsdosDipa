@@ -34,7 +34,7 @@ class RegisterController extends Controller
         if ($req->hasFile('gambar')) {
             $file = $req->file('gambar');
             $gambar = time() . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('public/profil', $gambar);
+            $file->storeAs('profil', $filename, 'public');
         }
 
         User::create([

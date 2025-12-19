@@ -68,7 +68,7 @@ class LoginController extends Controller
     }
     public function proses_logout()
     {
-        $this->clearSession();
+        session()->flush();
         return redirect('/login');
     }
 
