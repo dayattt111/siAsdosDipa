@@ -29,15 +29,15 @@ public function proses_login(Request $request)
     }
 
     if ($user->role === 'admin') {
-    session([
-        'user_id' => $user->id,
-        'user_nim' => $user->nim,
-        'user_role' => $user->role
-    ]);
+        $this->setUserSession([
+            'user_id' => $user->id,
+            'user_nim' => $user->nim,
+            'user_role' => $user->role
+        ]);
         return redirect('/adminAsdos');
     } 
     elseif ($user->role === 'dosen') {
-        session([
+        $this->setUserSession([
             'user_id' => $user->id,
             'user_nim' => $user->nim,
             'user_role' => $user->role
@@ -45,7 +45,7 @@ public function proses_login(Request $request)
         return redirect('/Dosen');
     }
     elseif ($user->role === 'mahasiswa') {
-        session([
+        $this->setUserSession([
             'user_id' => $user->id,
             'user_nim' => $user->nim,
             'user_role' => $user->role
@@ -57,7 +57,7 @@ public function proses_login(Request $request)
     }
     public function logout(Request $request)
     {
-        session()->flush();
+        $this->clearSession();
         return redirect('/login')->with('success', 'Berhasil logout!');
     }
 
