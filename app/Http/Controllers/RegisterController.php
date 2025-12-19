@@ -16,10 +16,10 @@ class RegisterController extends Controller
         return view('register');
     }
 
-    public function proses()
+        public function proses()
     {
         $req = request();
-        
+
         $validated = $req->validate([
             'nama_user' => 'required|string|max:255',
             'username' => 'required|string|unique:users',
@@ -30,11 +30,15 @@ class RegisterController extends Controller
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
+        // default foto
         $gambar = 'default.jpg';
+
         if ($req->hasFile('gambar')) {
             $file = $req->file('gambar');
             $gambar = time() . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('profil', $filename, 'public');
+
+            // SIMPAN KE storage/app/public/profil
+            $file->storeAs('profil', $gambar, 'public');
         }
 
         User::create([
@@ -50,4 +54,5 @@ class RegisterController extends Controller
 
         return redirect('/login')->with('success', 'Registrasi berhasil! Silahkan login.');
     }
+
 }
