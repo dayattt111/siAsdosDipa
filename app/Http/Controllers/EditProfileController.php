@@ -41,19 +41,24 @@ class EditProfileController extends Controller
             'no_hp' => $validated['no_hp']
         ];
 
-        // Handle upload foto
         if ($request->hasFile('gambar')) {
-            // Hapus foto lama jika ada dan bukan default
-            if ($user->gambar && $user->gambar !== 'default.jpg') {
-                Storage::delete('public/profil/' . $user->gambar);
+
+            // hapus foto lama
+            if ($user->gambar && $user->gambar !== 'default.jpg'
+                && Storage::disk('public')->exists('profil/'.$user->gambar)) {
+
+                Storage::disk('public')->delete('profil/'.$user->gambar);
             }
 
-            // Upload foto baru
             $file = $request->file('gambar');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('public/profil', $filename);
+
+            // SIMPAN KE storage/app/public/profil
+            $file->storeAs('profil', $filename, 'public');
+
             $updateData['gambar'] = $filename;
         }
+
 
         $user->update($updateData);
 
