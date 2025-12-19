@@ -25,7 +25,8 @@ class menuController extends Controller
         if (!$this->checkRole('mahasiswa')) {
             return redirect('/')->with('error', 'Anda harus login sebagai mahasiswa untuk mengakses halaman ini.');
         }
-        return view('Mahasiswa/jadwalMhs');
+        $jadwal = [];
+        return view('Mahasiswa/jadwalMhs', ['jadwal' => $jadwal]);
     }  
     public function sendJadwalMhs(){
         if (!$this->checkRole('mahasiswa')) {
@@ -43,13 +44,15 @@ class menuController extends Controller
         if (!$this->checkRole('mahasiswa')) {
             return redirect('/')->with('error', 'Anda harus login sebagai mahasiswa untuk mengakses halaman ini.');
         }
-        return view('Mahasiswa/statusSeleksi');
+        $status = [];
+        return view('Mahasiswa/statusSeleksi', ['status' => $status]);
     }  
     public function kirimStatus(){
         if (!$this->checkRole('mahasiswa')) {
             return redirect('/')->with('error', 'Anda harus login sebagai mahasiswa untuk mengakses halaman ini.');
         }
-        return view('Mahasiswa/statusSeleksi');
+        $status = [];
+        return view('Mahasiswa/statusSeleksi', ['status' => $status]);
     }  
 
 

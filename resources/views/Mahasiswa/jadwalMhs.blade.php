@@ -1,111 +1,48 @@
-<!-- resources/views/mhs/jadwal.blade.php -->
-<!doctype html>
-<html lang="id">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jadwal Asdos</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: #f5f7fa;
-    }
-    .container {
-      max-width: 600px;
-      margin: 60px auto;
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
-    }
-    a{
-        color: white
-    }
-    h2 {
-      margin-top: 0;
-      font-size: 22px;
-      color: #111;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 10px;
-    }
-    .jadwal-box {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      padding: 10px 14px;
-      margin-bottom: 10px;
-    }
-    .btn {
-      padding: 6px 12px;
-      border: none;
-      border-radius: 6px;
-      background: #2563eb;
-      color: #fff;
-      cursor: pointer;
-      font-size: 13px;
-    }
-    .bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 15px;
-    }
-    .status {
-      font-size: 14px;
-      color: #333;
-    }
-    a.link {
-      font-size: 13px;
-      color: #2563eb;
-      text-decoration: none;
-    }
-  </style>
-</head>
-<body>
+@extends('Mahasiswa.layout')
 
-<header class="bg-white shadow-md py-3 px-6 flex items-center justify-between">
-    <!-- Kiri: Logo atau Gambar Profil -->
-    <div class="flex items-center space-x-3">
-        {{-- <img src="LogoUndipa.png" alt="Profile" class="w-10 h-10 rounded-full border"> --}}
-        {{-- <h1 class="text-xl font-semibold text-gray-800">Jadwal Asdos</h1> --}}
-    </div>
+@section('title', 'Jadwal Asdos')
+@section('page_title', 'Jadwal Asdos')
 
-    <!-- Kanan: Tombol Logout -->
-    <a href="/" class="btn">Logout</a>
-</header>
-
-
-  <div class="container">
-    <h2>Jadwal Asdos</h2>
-
-    <div class="jadwal-box">
-      <span>Jadwal</span>
-      <button class="btn"><a href="/jadwalMhs/uploadDocs">Ajukan</a></button>
-    </div>
-    
-
-    <div class="jadwal-box">
-      <span>Jadwal</span>
-      <button class="btn"><a href="/jadwalMhs/uploadDocs">Ajukan</a></button>
-    </div>
-    
-
-    <div class="jadwal-box">
-      <span>Jadwal</span>
-      <button class="btn"><a href="/jadwalMhs/uploadDocs">Ajukan</a></button>
-    </div>
-    
-
-
-    <div class="bottom">
-    <a href="jadwalMhs/status" class="btn">status seleksi</a>
-
-    <a href="#" class="link">show more</a>
-    </div>
+@section('content')
+<div class="card">
+  <h2 style="margin-top:0;margin-bottom:20px;color:#111">Jadwal Pendaftaran Asdos</h2>
+  
+  <div style="background:#f9fafb;padding:15px;border-radius:6px;margin-bottom:20px;border-left:4px solid #2563eb">
+    <p style="margin:0;font-size:14px;color:#444">
+      Berikut adalah jadwal pendaftaran asdos untuk semester ini.
+      Pastikan anda mendaftar sesuai dengan jadwal yang telah ditentukan.
+    </p>
   </div>
-</body>
-</html>
+
+  @if($jadwal && count($jadwal) > 0)
+    <table style="width:100%;border-collapse:collapse">
+      <thead>
+        <tr style="background:#f3f4f6;border-bottom:1px solid #e5e7eb">
+          <th style="padding:12px;text-align:left;font-size:13px;color:#374151">No</th>
+          <th style="padding:12px;text-align:left;font-size:13px;color:#374151">Periode</th>
+          <th style="padding:12px;text-align:left;font-size:13px;color:#374151">Tanggal Mulai</th>
+          <th style="padding:12px;text-align:left;font-size:13px;color:#374151">Tanggal Akhir</th>
+          <th style="padding:12px;text-align:left;font-size:13px;color:#374151">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($jadwal as $key => $item)
+        <tr style="border-bottom:1px solid #e5e7eb">
+          <td style="padding:12px;font-size:13px">{{ $key+1 }}</td>
+          <td style="padding:12px;font-size:13px">{{ $item->periode ?? '-' }}</td>
+          <td style="padding:12px;font-size:13px">{{ $item->tgl_mulai ?? '-' }}</td>
+          <td style="padding:12px;font-size:13px">{{ $item->tgl_akhir ?? '-' }}</td>
+          <td style="padding:12px;font-size:13px">
+            <span style="background:#dbeafe;color:#1e40af;padding:4px 8px;border-radius:4px;font-size:12px">Aktif</span>
+          </td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
+  @else
+    <div style="background:#fef3c7;color:#92400e;padding:15px;border-radius:6px;border-left:4px solid #f59e0b">
+      <p style="margin:0;font-size:14px">Belum ada jadwal pendaftaran</p>
+    </div>
+  @endif
+</div>
+@endsection

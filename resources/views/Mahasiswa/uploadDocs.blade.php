@@ -1,98 +1,44 @@
-<!doctype html>
-<html lang="id">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Upload Dokumen</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: #f5f7fa;
-    }
-    .container {
-      max-width: 600px;
-      margin: 60px auto;
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
-    }
-    h2 {
-      margin-top: 0;
-      font-size: 22px;
-      color: #111;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 10px;
-    }
-    label {
-      display: block;
-      font-size: 14px;
-      color: #333;
-      margin-bottom: 4px;
-    }
-    input[type="file"], input[type="text"], textarea {
-      width: 100%;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      padding: 8px 10px;
-      font-size: 14px;
-      margin-bottom: 12px;
-      box-sizing: border-box;
-    }
-    textarea { resize: vertical; min-height: 70px; }
-    button {
-      width: 100%;
-      padding: 10px;
-      background: #2563eb;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 15px;
-    }
-  </style>
-</head>
-<body>
-  <header class="bg-white shadow-md py-3 px-6 flex items-center justify-between">
-    <!-- Kiri: Logo atau Gambar Profil -->
-    <div class="flex items-center space-x-3">
-        {{-- <img src="LogoUndipa.png" alt="Profile" class="w-10 h-10 rounded-full border"> --}}
-        {{-- <h1 class="text-xl font-semibold text-gray-800">Jadwal Asdos</h1> --}}
+@extends('Mahasiswa.layout')
+
+@section('title', 'Ajukan Asdos')
+@section('page_title', 'Ajukan Asdos')
+
+@section('content')
+<div class="card">
+  <h2 style="margin:0 0 20px;color:#111">Formulir Ajukan Asdos</h2>
+
+  <form method="POST" action="/jadwalMhs/uploadDocs" enctype="multipart/form-data" style="max-width:500px">
+    @csrf
+
+    <div style="margin-bottom:20px">
+      <label style="display:block;margin-bottom:8px;font-weight:600;font-size:14px;color:#333">Nama Mata Kuliah</label>
+      <input type="text" name="matakuliah" value="{{ old('matakuliah') }}" style="width:100%;padding:10px;border:1px solid #ddd;border-radius:6px;font-size:14px" required>
+      @error('matakuliah')<span style="color:#dc2626;font-size:12px">{{ $message }}</span>@enderror
     </div>
 
-    <!-- Kanan: Tombol Logout -->
-    <a href="/" class="btn">Logout</a>
-</header>
-  <div class="container">
-    <h2>Upload Dokumen</h2>
+    <div style="margin-bottom:20px">
+      <label style="display:block;margin-bottom:8px;font-weight:600;font-size:14px;color:#333">Dosen Pengampu</label>
+      <input type="text" name="dosen" value="{{ old('dosen') }}" style="width:100%;padding:10px;border:1px solid #ddd;border-radius:6px;font-size:14px" required>
+      @error('dosen')<span style="color:#dc2626;font-size:12px">{{ $message }}</span>@enderror
+    </div>
 
-    <form method="POST" action="/jadwalMhs/status" enctype="multipart/form-data">
-      @csrf
-      <div>
-        <label for="transkrip">Transkrip Nilai</label>
-        <input id="transkrip" type="file" name="transkrip">
-      </div>
+    <div style="margin-bottom:20px">
+      <label style="display:block;margin-bottom:8px;font-weight:600;font-size:14px;color:#333">Upload Berkas</label>
+      <input type="file" name="berkas" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:6px;font-size:14px" required>
+      @error('berkas')<span style="color:#dc2626;font-size:12px">{{ $message }}</span>@enderror
+      <p style="margin:8px 0 0;font-size:12px;color:#666">Format: PDF, DOC, DOCX (Max 5MB)</p>
+    </div>
 
-      <div>
-        <label for="jadwal">Jadwal Mhs</label>
-        <input id="jadwal" type="file" name="jadwal">
-      </div>
+    <div style="margin-bottom:20px">
+      <label style="display:block;margin-bottom:8px;font-weight:600;font-size:14px;color:#333">Catatan</label>
+      <textarea name="catatan" style="width:100%;padding:10px;border:1px solid #ddd;border-radius:6px;font-size:14px;font-family:inherit;resize:vertical;min-height:100px">{{ old('catatan') }}</textarea>
+      @error('catatan')<span style="color:#dc2626;font-size:12px">{{ $message }}</span>@enderror
+    </div>
 
-      <div>
-        <label for="dosen">Dosen yang Merekomendasi</label>
-        <input id="dosen" type="text" name="dosen">
-      </div>
-
-      <div>
-        <label for="alasan">Alasan ingin menjadi asdos matkul ini</label>
-        <textarea id="alasan" name="alasan"></textarea>
-      </div>
-
-      <button type="submit">Kirim</button><br>
-    </form>
-    <a href="/jadwalMhs">kembali</a>
-  </div>
-</body>
-</html>
+    <div style="display:flex;gap:10px">
+      <button type="submit" style="padding:10px 20px;background:#2563eb;color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600">Ajukan</button>
+      <a href="/jadwalMhs" style="padding:10px 20px;background:#6b7280;color:#fff;border-radius:6px;text-decoration:none;display:inline-flex;align-items:center">Kembali</a>
+    </div>
+  </form>
+</div>
+@endsection

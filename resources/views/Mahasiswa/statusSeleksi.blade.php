@@ -1,100 +1,47 @@
-<!doctype html>
-<html lang="id">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Status Asdos</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: #f5f7fa;
-    }
-    .container {
-      max-width: 600px;
-      margin: 60px auto;
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
-    }
-    h2 {
-      margin-top: 0;
-      font-size: 22px;
-      color: #111;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 10px;
-    }
-    .jadwal-box {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      padding: 10px 14px;
-      margin-bottom: 10px;
-    }
-    .status {
-      font-size: 14px;
-      color: #333;
-    }
-    a.link {
-      font-size: 13px;
-      color: #2563eb;
-      text-decoration: none;
-    }
-    .bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 15px;
-    }
-    .btn {
-      padding: 6px 12px;
-      border: 1px solid #2563eb;
-      border-radius: 6px;
-      background: #2563eb;
-      color: #fff;
-      cursor: pointer;
-      font-size: 14px;
-    }
-  </style>
-</head>
-<body>
-  <header class="bg-white shadow-md py-3 px-6 flex items-center justify-between">
-    <!-- Kiri: Logo atau Gambar Profil -->
-    <div class="flex items-center space-x-3">
-        {{-- <img src="LogoUndipa.png" alt="Profile" class="w-10 h-10 rounded-full border"> --}}
-        {{-- <h1 class="text-xl font-semibold text-gray-800">Jadwal Asdos</h1> --}}
-    </div>
+@extends('Mahasiswa.layout')
 
-    <!-- Kanan: Tombol Logout -->
-    <a href="/" class="btn">Logout</a>
-</header>
-  <div class="container">
-    <h2>Status Asdos</h2>
+@section('title', 'Status Seleksi')
+@section('page_title', 'Status Seleksi Asdos')
 
-    <div class="jadwal-box">
-      <span>Jadwal</span>
-      <span class="status">Status lolos / tidak lolos</span>
-    </div>
+@section('content')
+<div class="card">
+  <h2 style="margin:0 0 20px;color:#111">Status Seleksi Asdos Anda</h2>
 
-    <div class="jadwal-box">
-      <span>Jadwal</span>
-      <span class="status">Status lolos / tidak lolos</span>
+  @if($status && count($status) > 0)
+    <table style="width:100%;border-collapse:collapse">
+      <thead>
+        <tr style="background:#f3f4f6;border-bottom:1px solid #e5e7eb">
+          <th style="padding:12px;text-align:left;font-size:13px;color:#374151">No</th>
+          <th style="padding:12px;text-align:left;font-size:13px;color:#374151">Mata Kuliah</th>
+          <th style="padding:12px;text-align:left;font-size:13px;color:#374151">Dosen</th>
+          <th style="padding:12px;text-align:left;font-size:13px;color:#374151">Status</th>
+          <th style="padding:12px;text-align:left;font-size:13px;color:#374151">Keterangan</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($status as $key => $item)
+        <tr style="border-bottom:1px solid #e5e7eb">
+          <td style="padding:12px;font-size:13px">{{ $key+1 }}</td>
+          <td style="padding:12px;font-size:13px">{{ $item->matakuliah ?? '-' }}</td>
+          <td style="padding:12px;font-size:13px">{{ $item->dosen ?? '-' }}</td>
+          <td style="padding:12px;font-size:13px">
+            @if($item->status === 'diterima')
+              <span style="background:#dcfce7;color:#166534;padding:4px 8px;border-radius:4px;font-size:12px;font-weight:600">Diterima</span>
+            @elseif($item->status === 'ditolak')
+              <span style="background:#fee2e2;color:#991b1b;padding:4px 8px;border-radius:4px;font-size:12px;font-weight:600">Ditolak</span>
+            @else
+              <span style="background:#fef3c7;color:#92400e;padding:4px 8px;border-radius:4px;font-size:12px;font-weight:600">Proses</span>
+            @endif
+          </td>
+          <td style="padding:12px;font-size:13px;color:#666">{{ $item->keterangan ?? '-' }}</td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
+  @else
+    <div style="background:#fef3c7;color:#92400e;padding:15px;border-radius:6px;border-left:4px solid #f59e0b">
+      <p style="margin:0;font-size:14px">Belum ada pengajuan asdos</p>
     </div>
-
-    <div class="jadwal-box">
-      <span>Jadwal</span>
-      <span class="status">Status lolos / tidak lolos</span>
-    </div>
-
-    <div class="bottom">
-      <a href="/jadwalMhs" class="btn">Ajukan Asdos</a>
-      
-      <a href="#" class="link">show more</a>
-    </div>
-  </div>
-</body>
-</html>
+  @endif
+</div>
+@endsection
