@@ -86,7 +86,17 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="layout">
+        <div class="sidebar">
+            <ul class="sidebar-menu">
+                <li><a href="/admin/dashboard" class="active">📊 Dashboard</a></li>
+                <li><a href="/admin/asdos">📋 Kelola Asdos</a></li>
+                <li><a href="/admin/pendaftar">👥 Pendaftar Asdos</a></li>
+                <li><a href="/admin/users">👤 Kelola User</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="container">
         @if(session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
@@ -124,6 +134,8 @@
                 <h3>👤 Kelola User</h3>
                 <p>Tambah, edit, hapus user</p>
             </a>
+        </div>
+            </div>
         </div>
     </div>
 </body>

@@ -18,7 +18,26 @@
         .navbar h1 { font-size: 24px; }
         .navbar a { color: white; text-decoration: none; padding: 8px 15px; border-radius: 5px; background: rgba(255,255,255,0.2); }
         .navbar a:hover { background: rgba(255,255,255,0.3); }
-        .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+        .layout { display: flex; min-height: calc(100vh - 60px); }
+        .sidebar {
+            width: 250px;
+            background: white;
+            box-shadow: 2px 0 4px rgba(0,0,0,0.1);
+            padding: 20px 0;
+        }
+        .sidebar-menu { list-style: none; }
+        .sidebar-menu li { margin: 5px 0; }
+        .sidebar-menu a {
+            display: block;
+            padding: 12px 20px;
+            color: #333;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .sidebar-menu a:hover { background: #f0f0f0; }
+        .sidebar-menu a.active { background: #3182ce; color: white; }
+        .content { flex: 1; padding: 30px; }
+        .container { max-width: 100%; margin: 0; padding: 0; }
         .btn { padding: 8px 16px; border: none; border-radius: 5px; cursor: pointer; text-decoration: none; display: inline-block; font-size: 14px; }
         .btn-success { background: #28a745; color: white; }
         .btn-danger { background: #dc3545; color: white; }
@@ -39,12 +58,22 @@
     <div class="navbar">
         <h1>Data Pendaftar Asdos</h1>
         <div style="display: flex; gap: 15px;">
-            <a href="/admin/dashboard">Dashboard</a>
+            <span style="color: white;">{{ session('user')->nama_user }}</span>
             <a href="/logout">Logout</a>
         </div>
     </div>
 
-    <div class="container">
+    <div class="layout">
+        <div class="sidebar">
+            <ul class="sidebar-menu">
+                <li><a href="/admin/dashboard">📊 Dashboard</a></li>
+                <li><a href="/admin/asdos">📋 Kelola Asdos</a></li>
+                <li><a href="/admin/pendaftar" class="active">👥 Pendaftar Asdos</a></li>
+                <li><a href="/admin/users">👤 Kelola User</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="container">
         @if(session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
@@ -99,6 +128,8 @@
                 @endforelse
             </tbody>
         </table>
+            </div>
+        </div>
     </div>
 </body>
 </html>
