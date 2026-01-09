@@ -1,53 +1,86 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\menuController;
-use App\Http\Controllers\userController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\EditProfileController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DosenController;
+use App\Http\Controllers\MahasiswaController;
 
-Route::get('/', [menuController::class, 'index']);
-Route::get('/login', [LoginController::class, 'form']);
-Route::post('/login', [LoginController::class, 'proses_login']);
-Route::get('/register', [RegisterController::class, 'form']);
-Route::post('/register', [RegisterController::class, 'proses']);
-Route::get('/logout', [LoginController::class, 'proses_logout']);
+// Public Routes
+Route::middleware(['guest.custom'])->group(function () {
+    Route::get('/', function () {
+        return redirect('/login');
+    });
+    Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+    Route::post('/register', [AuthController::class, 'register']);
+});
 
-Route::get('/profile', [EditProfileController::class, 'form']);
-Route::post('/profile', [EditProfileController::class, 'proses']);
+// Logout Route
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::post('/jadwalMhs', [menuController::class, 'sendJadwalMhs']);
-Route::get('/jadwalMhs', [menuController::class, 'jadwalMhs']);
-Route::get('/jadwalMhs/uploadDocs', [menuController::class, 'uploadDocs']);
-Route::get('/jadwalMhs/status', [menuController::class, 'cekStatus']);
-Route::post('/jadwalMhs/status', [menuController::class, 'kirimStatus']);
+// Admin Routes
+Route::middleware(['auth.custom', 'role:admin'])->prefix('admin')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    
+    // Asdos Management
+    Route::get('/asdos', [AdminController::class, 'dataAsdos'])->name('admin.asdos');
+    Route::get('/asdos/create', [AdminController::class, 'createAsdos'])->name('admin.asdos.create');
+    Route::post('/asdos', [AdminController::class, 'storeAsdos'])->name('admin.asdos.store');
+    Route::get('/asdos/{id}/edit', [AdminController::class, 'editAsdos'])->name('admin.asdos.edit');
+    Route::post('/asdos/{id}', [AdminController::class, 'updateAsdos'])->name('admin.asdos.update');
+    Route::post('/asdos/{id}/delete', [AdminController::class, 'deleteAsdos'])->name('admin.asdos.delete');
+    
+    // Pendaftar Management
+    Route::get('/pendaftar', [AdminController::class, 'dataPendaftar'])->name('admin.pendaftar');
+    Route::get('/pendaftar/{id}', [AdminController::class, 'detailPendaftar'])->name('admin.pendaftar.detail');
+    Route::post('/pendaftar/{id}/approve', [AdminController::class, 'approvePendaftar'])->name('admin.pendaftar.approve');
+    Route::post('/pendaftar/{id}/reject', [AdminController::class, 'rejectPendaftar'])->name('admin.pendaftar.reject');
+    
+    // User Management
+    Route::get('/users', [AdminController::class, 'dataUser'])->name('admin.users');
+    Route::get('/users/create', [AdminController::class, 'createUser'])->name('admin.users.create');
+    Route::post('/users', [AdminController::class, 'storeUser'])->name('admin.users.store');
+    Route::get('/users/{id}/edit', [AdminController::class, 'editUser'])->name('admin.users.edit');
+    Route::post('/users/{id}', [AdminController::class, 'updateUser'])->name('admin.users.update');
+    Route::post('/users/{id}/delete', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
+});
 
-Route::post('/Dosen', [menuController::class, 'indexDosen']);
-Route::get('/Dosen', [menuController::class, 'indexDosen']);
-Route::get('/Dosen/cekAsdos', [menuController::class, 'daftarAsdos']);
-Route::get('/Dosen/detailAsdos', [menuController::class, 'DosenDetailAsdos']);
-Route::post('/Dosen/detailAsdos', [menuController::class, 'DosenDetailAsdos']);
-Route::get('/Dosen/semuaAsdos', [menuController::class, 'semuaAsdos']);
-Route::get('/Dosen/cekCalonAsdos', [menuController::class, 'daftarCalonAsdos']);
-Route::post('/Dosen/cekCalonAsdos', [menuController::class, 'daftarCalonAsdos']);
-Route::get('/Dosen/detail', [menuController::class, 'detailCalonAsdos']);
-Route::post('/Dosen/detail', [menuController::class, 'detailCalonAsdos']);
-Route::get('/Dosen/semuaCalonAsdos', [menuController::class, 'semuaCalonAsdos']);
-Route::get('/Dosen/komentar', [menuController::class, 'komentarDosen']);
-Route::post('/Dosen/kirimKomentar', [menuController::class, 'kirimKomentarDosen']);
+// Dosen Routes
+Route::middleware(['auth.custom', 'role:dosen'])->prefix('dosen')->group(function () {
+    Route::get('/dashboard', [DosenController::class, 'dashboard'])->name('dosen.dashboard');
+    
+    // My Asdos
+    Route::get('/my-asdos', [DosenController::class, 'myAsdos'])->name('dosen.my-asdos');
+    Route::get('/my-asdos/{id}', [DosenController::class, 'detailAsdos'])->name('dosen.asdos.detail');
+    
+    // Pendaftar
+    Route::get('/pendaftar', [DosenController::class, 'dataPendaftar'])->name('dosen.pendaftar');
+    Route::get('/pendaftar/{id}', [DosenController::class, 'detailPendaftar'])->name('dosen.pendaftar.detail');
+    Route::post('/pendaftar/{id}/komentar', [DosenController::class, 'komentarPendaftar'])->name('dosen.pendaftar.komentar');
+});
 
-Route::post('/adminAsdos', [menuController::class,'indexAdmin']);
-Route::get('/adminAsdos', [menuController::class,'indexAdmin']);
-Route::get('Admin/Asdos', [menuController::class,'dataAsdos']);
-Route::post('/Admin/Asdos', [menuController::class,'dataAsdos']);
-Route::post('/Admin/TambahAsdos', [menuController::class, 'tambahAsdos']);
-Route::get('/Admin/TambahAsdos', [menuController::class, 'tambahAsdos']);
-Route::post('/Admin/editAsdos', [menuController::class, 'editAsdos']);
-Route::get('/Admin/editAsdos', [menuController::class, 'editAsdos']);
-Route::get('/Admin/calonAsdos', [menuController::class, 'dataCalonAsdos']);
-Route::post('/Admin/calonAsdos', [menuController::class, 'dataCalonAsdos']);
-Route::get('/Admin/tambahcalonAsdos', [menuController::class, 'tambahCalonAsdos']);
+// Mahasiswa Routes
+Route::middleware(['auth.custom', 'role:mahasiswa'])->prefix('mahasiswa')->group(function () {
+    Route::get('/dashboard', [MahasiswaController::class, 'dashboard'])->name('mahasiswa.dashboard');
+    
+    // Pendaftaran Asdos
+    Route::get('/daftar', [MahasiswaController::class, 'formPendaftaran'])->name('mahasiswa.daftar');
+    Route::post('/daftar', [MahasiswaController::class, 'storePendaftaran'])->name('mahasiswa.daftar.store');
+    
+    // Riwayat
+    Route::get('/riwayat', [MahasiswaController::class, 'riwayatPendaftaran'])->name('mahasiswa.riwayat');
+    Route::get('/riwayat/{id}', [MahasiswaController::class, 'detailPendaftaran'])->name('mahasiswa.riwayat.detail');
+    
+    // Status Asdos
+    Route::get('/status-asdos', [MahasiswaController::class, 'statusAsdos'])->name('mahasiswa.status');
+    
+    // Profile
+    Route::get('/profile', [MahasiswaController::class, 'profile'])->name('mahasiswa.profile');
+    Route::post('/profile', [MahasiswaController::class, 'updateProfile'])->name('mahasiswa.profile.update');
+});
+
 Route::post('/Admin/tambahcalonAsdos', [menuController::class, 'tambahCalonAsdos']);
 Route::get('/Admin/editcalonAsdos', [menuController::class, 'editCalonAsdos']);
 Route::post('/Admin/editcalonAsdos', [menuController::class, 'editCalonAsdos']);

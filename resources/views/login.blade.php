@@ -1,53 +1,140 @@
-<!-- resources/views/auth/login.blade.php -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Login</title>
-  <style>
-    /* Center both vertically & horizontally */
-    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;}
-    .wrap {
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:#f5f7fa;
-      padding:20px;
-    }
-    .card {
-      width:100%;
-      max-width:420px;
-      background:#fff;
-      border-radius:8px;
-      box-shadow:0 6px 18px rgba(0,0,0,0.08);
-      padding:28px;
-      box-sizing:border-box;
-    }
-    h1{margin:0 0 14px;font-size:20px;color:#111}
-    .desc{margin:0 0 18px;color:#666;font-size:14px}
-    label{display:block;font-size:13px;color:#333;margin-bottom:6px}
-    input[type="text"], input[type="email"], input[type="password"]{
-      width:100%;
-      padding:10px 12px;
-      border:1px solid #d7dbe0;
-      border-radius:6px;
-      box-sizing:border-box;
-      margin-bottom:12px;
-      font-size:14px;
-    }
-    .row {display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
-    .remember {display:flex;align-items:center;gap:8px;font-size:13px;color:#444}
-    .btn {
-      width:100%;
-      padding:10px 12px;
-      border:0;
-      border-radius:6px;
-      background:#2563eb;
-      color:#fff;
-      font-weight:600;
-      cursor:pointer;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Manajemen Asdos</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            max-width: 400px;
+            width: 100%;
+            padding: 40px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        .alert {
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .alert-error {
+            background-color: #fee;
+            color: #c00;
+            border-left: 4px solid #c00;
+        }
+        .alert-success {
+            background-color: #efe;
+            color: #0a0;
+            border-left: 4px solid #0a0;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 500;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+        }
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+        .register-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Manajemen Asdos</h1>
+        <p class="subtitle">Silakan login untuk melanjutkan</p>
+
+        @if(session('error'))
+            <div class="alert alert-error">{{ session('error') }}</div>
+        @endif
+
+        @if(session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
+
+        <form action="/login" method="POST">
+            @csrf
+            <div class="form-group">
+                <label for="username">Username atau Email</label>
+                <input type="text" id="username" name="username" value="{{ old('username') }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <div class="register-link">
+            Belum punya akun? <a href="/register">Daftar di sini</a>
+        </div>
+    </div>
+</body>
+</html>
+
       font-size:15px;
     }
     .error {color:#b91c1c;font-size:13px;margin-bottom:12px;}
