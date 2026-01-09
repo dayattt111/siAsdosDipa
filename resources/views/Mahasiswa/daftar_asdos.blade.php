@@ -8,7 +8,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; }
         .navbar {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #2d3748;
             color: white;
             padding: 15px 30px;
             display: flex;
@@ -28,11 +28,11 @@
         .form-group { margin-bottom: 20px; }
         label { display: block; margin-bottom: 5px; color: #333; font-weight: 500; }
         input, textarea, select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px; }
-        input:focus, textarea:focus, select:focus { outline: none; border-color: #667eea; }
+        input:focus, textarea:focus, select:focus { outline: none; border-color: #3182ce; }
         textarea { min-height: 100px; resize: vertical; }
         .btn { padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
-        .btn-primary { background: #667eea; color: white; width: 100%; }
-        .btn-primary:hover { background: #5568d3; }
+        .btn-primary { background: #3182ce; color: white; width: 100%; }
+        .btn-primary:hover { background: #2c5aa0; }
         .error { color: #dc3545; font-size: 12px; margin-top: 3px; }
         .alert { padding: 15px; border-radius: 5px; margin-bottom: 20px; }
         .alert-error { background-color: #f8d7da; color: #721c24; border-left: 4px solid #dc3545; }

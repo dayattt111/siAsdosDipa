@@ -8,7 +8,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; }
         .navbar {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #2d3748;
             color: white;
             padding: 15px 30px;
             display: flex;
@@ -33,7 +33,7 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .stat-card h3 { color: #666; font-size: 14px; margin-bottom: 10px; }
-        .stat-card .number { font-size: 32px; font-weight: bold; color: #667eea; }
+        .stat-card .number { font-size: 32px; font-weight: bold; color: #3182ce; }
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -50,7 +50,7 @@
             transition: transform 0.2s;
         }
         .menu-card:hover { transform: translateY(-5px); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
-        .menu-card h3 { margin-top: 15px; color: #667eea; }
+        .menu-card h3 { margin-top: 15px; color: #3182ce; }
         .alert { padding: 15px; border-radius: 5px; margin-bottom: 20px; }
         .alert-success { background-color: #d4edda; color: #155724; border-left: 4px solid #28a745; }
     </style>

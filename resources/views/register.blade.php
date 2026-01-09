@@ -8,7 +8,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #4a5568;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -64,7 +64,7 @@
         }
         input:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #3182ce;
         }
         .error {
             color: #c00;
@@ -74,18 +74,18 @@
         button {
             width: 100%;
             padding: 12px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #3182ce;
             color: white;
             border: none;
             border-radius: 5px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: background 0.2s;
             margin-top: 10px;
         }
         button:hover {
-            transform: translateY(-2px);
+            background: #2c5aa0;
         }
         .login-link {
             text-align: center;
@@ -93,7 +93,7 @@
             color: #666;
         }
         .login-link a {
-            color: #667eea;
+            color: #3182ce;
             text-decoration: none;
             font-weight: 600;
         }

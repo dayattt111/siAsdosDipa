@@ -8,7 +8,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #4a5568;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -68,22 +68,22 @@
         }
         input:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #3182ce;
         }
         button {
             width: 100%;
             padding: 12px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #3182ce;
             color: white;
             border: none;
             border-radius: 5px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: background 0.2s;
         }
         button:hover {
-            transform: translateY(-2px);
+            background: #2c5aa0;
         }
         .register-link {
             text-align: center;
@@ -91,7 +91,7 @@
             color: #666;
         }
         .register-link a {
-            color: #667eea;
+            color: #3182ce;
             text-decoration: none;
             font-weight: 600;
         }
@@ -134,15 +134,9 @@
     </div>
 </body>
 </html>
-
-      font-size:15px;
-    }
-    .error {color:#b91c1c;font-size:13px;margin-bottom:12px;}
-    .help {font-size:13px;color:#6b7280;text-align:center;margin-top:12px;}
-    a.link{color:#2563eb;text-decoration:none;}
   </style>
 </head>
-<body>
+{{-- <body>
   <div class="wrap">
     <div class="card">
       <center><h1>Login</h1></center>
@@ -174,5 +168,5 @@
       <p class="help">Belum punya akun? <a class="link" href="/register">Register</a></p>
     </div>
   </div>
-</body>
+</body> --}}
 </html>

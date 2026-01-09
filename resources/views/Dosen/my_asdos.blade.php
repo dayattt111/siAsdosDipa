@@ -8,7 +8,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; }
         .navbar {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #2d3748;
             color: white;
             padding: 15px 30px;
             display: flex;
@@ -21,7 +21,7 @@
         .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
         table { width: 100%; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         th, td { padding: 15px; text-align: left; }
-        th { background: #667eea; color: white; }
+        th { background: #3182ce; color: white; }
         tr:nth-child(even) { background: #f8f9fa; }
         .badge { padding: 5px 10px; border-radius: 3px; font-size: 12px; }
         .badge-success { background: #28a745; color: white; }

@@ -1,0 +1,244 @@
+# INSTRUKSI SETUP APLIKASI MANAJEMEN ASDOS
+
+## Langkah-Langkah Setup
+
+### 1. Pastikan Laragon Aktif
+Jalankan Laragon dan pastikan MySQL sudah berjalan.
+
+### 2. Buat Database
+Buka HeidiSQL atau MySQL client lainnya, lalu jalankan:
+```sql
+CREATE DATABASE project_232220;
+```
+
+### 3. Konfigurasi .env
+Pastikan file .env sudah ada. Jika belum, copy dari .env.example:
+```bash
+copy .env.example .env
+```
+
+Edit file .env, sesuaikan:
+```
+APP_NAME="Manajemen Asdos"
+APP_URL=http://project-232220.test
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=project_232220
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 4. Install Dependencies
+```bash
+composer install
+```
+
+### 5. Generate Key
+```bash
+php artisan key:generate
+```
+
+### 6. Jalankan Migration
+```bash
+php artisan migrate:fresh --seed
+```
+
+Perintah ini akan:
+- Membuat semua tabel database
+- Mengisi data user default untuk testing
+
+### 7. Buat Storage Link
+```bash
+php artisan storage:link
+```
+
+### 8. Bersihkan Cache (jika perlu)
+```bash
+php artisan config:clear
+php artisan cache:clear
+php artisan view:clear
+```
+
+### 9. Jalankan Aplikasi
+Jika menggunakan Laragon:
+```
+http://project-232220.test
+```
+
+Atau jalankan server artisan:
+```bash
+php artisan serve
+```
+Lalu akses: `http://localhost:8000`
+
+## Akun untuk Testing
+
+### Admin
+- Username: `admin`
+- Password: `admin123`
+- Akses: Semua fitur admin
+
+### Dosen
+- Username: `budi.dosen`
+- Password: `dosen123`
+- Akses: Fitur dosen
+
+### Mahasiswa
+- Username: `andi.mhs` atau `siti.mhs`
+- Password: `mahasiswa123`
+- Akses: Fitur mahasiswa
+
+## Fitur per Role
+
+### ADMIN
+✅ Dashboard dengan statistik
+✅ Kelola Asdos (Tambah, Edit, Hapus)
+✅ Kelola Pendaftar Asdos (Approve/Reject)
+✅ Kelola User (Tambah, Edit, Hapus)
+
+### DOSEN
+✅ Dashboard dosen
+✅ Lihat asdos yang dibimbing
+✅ Lihat pendaftar asdos
+✅ Beri komentar pada pendaftar
+
+### MAHASISWA
+✅ Dashboard mahasiswa
+✅ Daftar menjadi asdos
+✅ Lihat riwayat pendaftaran
+✅ Lihat status sebagai asdos
+✅ Edit profile & upload foto
+
+## Troubleshooting
+
+### Error: No connection could be made
+**Solusi:**
+1. Pastikan MySQL di Laragon sudah berjalan
+2. Cek konfigurasi database di file .env
+3. Pastikan database sudah dibuat
+
+### Error: 419 Page Expired
+**Solusi:**
+```bash
+php artisan config:clear
+```
+
+### Error: The stream or file storage/logs/laravel.log could not be opened
+**Solusi:**
+Pastikan folder storage memiliki permission write
+
+### Error: Class not found
+**Solusi:**
+```bash
+composer dump-autoload
+```
+
+### Upload file tidak berfungsi
+**Solusi:**
+```bash
+php artisan storage:link
+```
+
+## Struktur Aplikasi
+
+### Routes (web.php)
+- Semua routes sudah dikonfigurasi dengan middleware
+- Route terpisah per role: admin, dosen, mahasiswa
+- Protected dengan middleware auth.custom dan role
+
+### Middleware
+- `auth.custom`: Cek user sudah login
+- `guest.custom`: Cek user belum login
+- `role:admin,dosen,mahasiswa`: Cek role user
+
+### Controllers
+- `AuthController`: Login, register, logout
+- `AdminController`: Semua fungsi admin
+- `DosenController`: Semua fungsi dosen
+- `MahasiswaController`: Semua fungsi mahasiswa
+
+### Models
+- `User`: Data user dengan role
+- `Asdos`: Data asdos aktif
+- `PendaftarAsdos`: Data pendaftar asdos
+
+### Views
+Struktur views:
+```
+resources/views/
+├── login.blade.php
+├── register.blade.php
+├── Admin/
+│   ├── dashboard.blade.php
+│   ├── asdos.blade.php
+│   ├── tambah_asdos.blade.php
+│   ├── pendaftar.blade.php
+│   └── users.blade.php
+├── Dosen/
+│   ├── dashboard.blade.php
+│   ├── my_asdos.blade.php
+│   └── pendaftar.blade.php
+└── Mahasiswa/
+    ├── dashboard.blade.php
+    ├── daftar_asdos.blade.php
+    ├── riwayat.blade.php
+    ├── detail_pendaftaran.blade.php
+    ├── status_asdos.blade.php
+    └── profile.blade.php
+```
+
+## Testing Aplikasi
+
+### 1. Test Login
+- Buka `/login`
+- Login dengan akun admin, dosen, atau mahasiswa
+- Pastikan redirect ke dashboard yang sesuai
+
+### 2. Test Mahasiswa
+- Login sebagai mahasiswa
+- Daftar sebagai asdos
+- Lihat riwayat pendaftaran
+- Edit profile
+
+### 3. Test Dosen
+- Login sebagai dosen
+- Lihat pendaftar asdos
+- Beri komentar
+
+### 4. Test Admin
+- Login sebagai admin
+- Approve/reject pendaftar
+- Tambah asdos baru
+- Kelola user
+
+## Database Schema
+
+### users
+```sql
+id, nama_user, username, email, nim, no_hp, gambar, password, role, timestamps
+```
+
+### asdos
+```sql
+id, user_id, dosen_id, mata_kuliah, kode_mk, semester, deskripsi, status, timestamps
+```
+
+### pendaftar_asdos
+```sql
+id, user_id, mata_kuliah, kode_mk, ipk, semester, motivasi, dokumen, status, komentar, timestamps
+```
+
+## Catatan Penting
+
+1. Semua password di-hash menggunakan bcrypt
+2. Session-based authentication (tidak menggunakan Laravel default auth)
+3. File upload disimpan di `storage/app/public`
+4. Validasi input ada di semua form
+5. CSRF protection aktif di semua form
+6. Role-based access control dengan middleware
+
+---
+
+✅ APLIKASI SIAP DIGUNAKAN!

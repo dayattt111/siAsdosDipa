@@ -8,7 +8,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; }
         .navbar {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #2d3748;
             color: white;
             padding: 15px 30px;
             display: flex;
@@ -72,7 +72,7 @@
                 <div class="label">Dokumen</div>
                 <div class="value">
                     @if($pendaftar->dokumen)
-                        <a href="{{ asset('storage/' . $pendaftar->dokumen) }}" target="_blank" style="color: #667eea;">Download Dokumen</a>
+                        <a href="{{ asset('storage/' . $pendaftar->dokumen) }}" target="_blank" style="color: #3182ce;">Download Dokumen</a>
                     @else
                         -
                     @endif
