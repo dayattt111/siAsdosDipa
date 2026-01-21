@@ -48,7 +48,9 @@
       margin: 0;
     }
     .sidebar-menu a {
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 12px;
       padding: 12px 20px;
       color: #d1d5db;
       text-decoration: none;
@@ -65,6 +67,18 @@
       color: #fff;
       border-left: 4px solid #93c5fd;
       padding-left: 16px;
+    }
+    .sidebar-menu .menu-icon {
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+    .sidebar-divider {
+      border-top: 1px solid #374151;
+      margin: 15px 0;
     }
     .main {
       flex: 1;
@@ -154,14 +168,29 @@
   <div class="wrapper">
     <div class="sidebar">
       <div class="sidebar-header">
-        <h3>{{ session('user_nama') ?? 'User' }}</h3>
-        <p>{{ session('user_nim') }}</p>
+        <h3>{{ session('user')->nama_user ?? 'User' }}</h3>
+        <p>{{ session('user')->nim ?? 'NIM' }}</p>
       </div>
       <ul class="sidebar-menu">
-        <li><a href="/jadwalMhs" @if(request()->path() === 'jadwalMhs') class="active" @endif>Jadwal Asdos</a></li>
-        <li><a href="/jadwalMhs/status" @if(request()->path() === 'jadwalMhs/status') class="active" @endif>Status Seleksi</a></li>
-        <li><a href="/profile" @if(request()->path() === 'profile') class="active" @endif>Edit Profile</a></li>
-        <li><a href="/logout" class="btn-logout" style="color:#fff">Logout</a></li>
+        <li><a href="/mahasiswa/dashboard" @if(request()->path() === 'mahasiswa/dashboard') class="active" @endif><span class="menu-icon">📊</span> Dashboard</a></li>
+        
+        <div class="sidebar-divider"></div>
+        
+        {{-- <li><a href="/mahasiswa/jadwalMhs" @if(request()->path() === 'mahasiswa/jadwalMhs') class="active" @endif><span class="menu-icon">📅</span> Jadwal Asdos</a></li> --}}
+        <li><a href="/mahasiswa/jadwalMhs/status" @if(request()->path() === 'mahasiswa/jadwalMhs/status') class="active" @endif><span class="menu-icon">✅</span> Status Seleksi</a></li>
+        
+        <div class="sidebar-divider"></div>
+        
+        <li><a href="/mahasiswa/daftar-asdos" @if(request()->path() === 'mahasiswa/daftar-asdos') class="active" @endif><span class="menu-icon">📝</span> Daftar Asdos</a></li>
+        <li><a href="/mahasiswa/riwayat" @if(request()->path() === 'mahasiswa/riwayat') class="active" @endif><span class="menu-icon">📋</span> Riwayat</a></li>
+        
+        <div class="sidebar-divider"></div>
+        
+        {{-- <li><a href="/mahasiswa/profile" @if(request()->path() === 'mahasiswa/profile') class="active" @endif><span class="menu-icon">👤</span> Edit Profile</a></li> --}}
+        
+        <div class="sidebar-divider"></div>
+        
+        <li><a href="/logout" style="color:#fca5a5"><span class="menu-icon">🚪</span> Logout</a></li>
       </ul>
     </div>
 
@@ -169,7 +198,7 @@
       <div class="navbar">
         <div class="navbar-title">@yield('page_title', 'Dashboard')</div>
         <div class="navbar-user">
-          Selamat datang, {{ session('user_nama') ?? 'User' }}
+          Selamat datang, {{ session('user')->nama_user ?? 'User' }}
         </div>
       </div>
 

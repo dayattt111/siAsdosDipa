@@ -98,20 +98,33 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="mata_kuliah">Mata Kuliah</label>
-                    <input type="text" id="mata_kuliah" name="mata_kuliah" value="{{ old('mata_kuliah') }}" required>
+                    <label for="matakuliah_id">Mata Kuliah</label>
+                    <select id="matakuliah_id" name="matakuliah_id" required onchange="updateMataKuliah()">
+                        <option value="">Pilih Mata Kuliah</option>
+                        @foreach($matakuliah as $mk)
+                            <option value="{{ $mk->id }}" data-kode="{{ $mk->kode_mk }}" data-semester="{{ $mk->semester }}">
+                                [{{ $mk->kode_mk }}] {{ $mk->nama_mk }} (Semester {{ $mk->semester }})
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('matakuliah_id')<div class="error">{{ $message }}</div>@enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="mata_kuliah">Nama Mata Kuliah (Auto)</label>
+                    <input type="text" id="mata_kuliah" name="mata_kuliah" value="{{ old('mata_kuliah') }}" readonly style="background: #f0f0f0;">
                     @error('mata_kuliah')<div class="error">{{ $message }}</div>@enderror
                 </div>
 
                 <div class="form-group">
-                    <label for="kode_mk">Kode Mata Kuliah</label>
-                    <input type="text" id="kode_mk" name="kode_mk" value="{{ old('kode_mk') }}" required>
+                    <label for="kode_mk">Kode Mata Kuliah (Auto)</label>
+                    <input type="text" id="kode_mk" name="kode_mk" value="{{ old('kode_mk') }}" readonly style="background: #f0f0f0;">
                     @error('kode_mk')<div class="error">{{ $message }}</div>@enderror
                 </div>
 
                 <div class="form-group">
-                    <label for="semester">Semester</label>
-                    <input type="text" id="semester" name="semester" value="{{ old('semester') }}" required>
+                    <label for="semester">Semester (Auto)</label>
+                    <input type="text" id="semester" name="semester" value="{{ old('semester') }}" readonly style="background: #f0f0f0;">
                     @error('semester')<div class="error">{{ $message }}</div>@enderror
                 </div>
 
@@ -136,5 +149,27 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function updateMataKuliah() {
+            const select = document.getElementById('matakuliah_id');
+            const selectedOption = select.options[select.selectedIndex];
+            
+            if (selectedOption.value) {
+                const mataKuliahData = @json($matakuliah);
+                const selectedMk = mataKuliahData.find(mk => mk.id == selectedOption.value);
+                
+                if (selectedMk) {
+                    document.getElementById('mata_kuliah').value = selectedMk.nama_mk;
+                    document.getElementById('kode_mk').value = selectedMk.kode_mk;
+                    document.getElementById('semester').value = selectedMk.semester;
+                }
+            } else {
+                document.getElementById('mata_kuliah').value = '';
+                document.getElementById('kode_mk').value = '';
+                document.getElementById('semester').value = '';
+            }
+        }
+    </script>
 </body>
 </html>

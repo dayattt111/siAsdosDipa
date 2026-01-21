@@ -13,6 +13,7 @@ class PendaftarAsdos extends Model
     
     protected $fillable = [
         'user_id',
+        'matakuliah_id',
         'mata_kuliah',
         'kode_mk',
         'ipk',
@@ -26,5 +27,10 @@ class PendaftarAsdos extends Model
     public function mahasiswa()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function matakuliah()
+    {
+        return $this->belongsTo(MataKuliah::class, 'matakuliah_id');
     }
 }

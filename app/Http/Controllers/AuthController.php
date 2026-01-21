@@ -81,6 +81,17 @@ class AuthController extends Controller
         session()->forget('user');
         session()->flush();
         
-        return redirect('/login')->with('success', 'Logout berhasil!');
+        // Clear all cookies
+        foreach (\Illuminate\Support\Facades\Cookie::getQueuedCookies() as $cookie) {
+            setcookie($cookie->getName(), '', [
+                'expires' => time() - 3600,
+                'path' => '/',
+            ]);
+        }
+        
+        return redirect('/login')
+            ->with('success', 'Logout berhasil!')
+            ->cookie('XSRF-TOKEN', '', -1)
+            ->cookie('laravel_session', '', -1);
     }
 }

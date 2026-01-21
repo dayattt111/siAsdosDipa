@@ -1,192 +1,57 @@
-<!doctype html>
-<html lang="id">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Komentar dan Penilaian</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-            background: #f5f7fa;
-        }
+@extends('Dosen.layout')
 
-        .container {
-            max-width: 600px;
-            margin: 60px auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.05);
-        }
+@section('content')
+<div style="max-width: 700px; margin: 0 auto;">
+    <h2 style="font-size: 24px; color: #333; margin-bottom: 20px; border-bottom: 2px solid #3182ce; padding-bottom: 10px;">💬 Komentar dan Penilaian</h2>
 
-        h2 {
-            margin-top: 0;
-            font-size: 22px;
-            color: #111;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-
-        .info-header {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr; /* Membagi kolom untuk Nama, Nim, Pilihan Kelas */
-            font-weight: bold;
-            color: #555;
-            padding: 5px 0;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #eee;
-            font-size: 14px;
-        }
-
-        .info-details {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            margin-bottom: 15px;
-            font-size: 15px;
-            color: #333;
-        }
-
-        textarea {
-            width: 100%;
-            min-height: 120px;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-sizing: border-box; /* Penting agar padding tidak melebarkan elemen */
-            resize: vertical;
-            font-size: 14px;
-        }
-
-        .radio-group label {
-            margin-right: 25px;
-            font-size: 15px;
-            color: #333;
-            cursor: pointer;
-        }
-
-        .radio-group input[type="radio"] {
-            margin-right: 5px;
-        }
-
-        .actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 25px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-        }
-
-        .btn {
-            padding: 8px 16px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            text-decoration: none;
-            display: inline-block; /* Untuk button/link */
-            text-align: center;
-        }
-
-        .btn-back {
-            background: #6c757d; /* Abu-abu */
-            color: #fff;
-        }
-
-        .btn-submit {
-            background: #007bff; /* Biru */
-            color: #fff;
-            font-weight: bold;
-        }
-
-        /* URL Bar Mockup */
-        .browser-mockup {
-            border: 1px solid #ccc;
-            border-radius: 8px 8px 0 0;
-            background: #fff;
-            max-width: 600px;
-            margin: 20px auto 0;
-            padding: 0;
-        }
-
-        .browser-mockup .url-bar {
-            display: flex;
-            align-items: center;
-            padding: 8px 10px;
-            background: #e9ecef;
-            border-bottom: 1px solid #ccc;
-            border-radius: 6px 6px 0 0;
-        }
-
-        .browser-mockup .url-bar .controls {
-            display: flex;
-            gap: 10px;
-            margin-right: 15px;
-            color: #666;
-        }
-
-        .browser-mockup .url-bar .url-input {
-            flex-grow: 1;
-            padding: 5px 10px;
-            border: 1px solid #adb5bd;
-            border-radius: 4px;
-            background: #fff;
-            font-size: 14px;
-            color: #495057;
-        }
-
-        .browser-mockup .content-placeholder {
-            padding: 15px 20px;
-        }
-    </style>
-</head>
-<body>
-
-<div class="browser-mockup">
-    <div class="content-placeholder">
-        <div class="container" style="box-shadow: none; margin: 0 auto; padding: 0;">
-            <h2>Komentar dan penilaian</h2>
-
-            <div class="info-header">
-                <span>Nama</span>
-                <span>Nim</span>
-                <span>Pilihan Kelas</span>
-            </div>
-
-            <div class="info-details">
-                <span>Calon Asdos</span>
-                <span>13018001</span>
-                <span>Framework</span>
-            </div>
-            <form action="/Dosen/kirimKomentar" method="POST">
-                @csrf
-                <textarea name="komentar_dosen" placeholder="komentar dosen"></textarea>
-
-                <div class="radio-group">
-                    <label>
-                        <input type="radio" name="persetujuan" value="setuju" checked> Setuju
-                    </label>
-                    <label>
-                        <input type="radio" name="persetujuan" value="tidak_setuju"> Tidak Setuju
-                    </label>
-                </div>
-
-                <div class="actions">
-                    <a href="/Dosen/cekCalonAsdos" class="btn btn-back">
-                        < back
-                    </a>
-                    <button type="submit" class="btn btn-submit">
-                        kirim
-                    </button>
-                </div>
-            </form>
+    <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px;">
+        
+        <!-- Info Header -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; font-weight: 600; color: #666; padding: 10px 0; margin-bottom: 15px; border-bottom: 1px solid #eee; font-size: 13px;">
+            <span>Nama</span>
+            <span>Nim</span>
+            <span>Pilihan Kelas</span>
         </div>
+
+        <!-- Info Details -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; margin-bottom: 25px; font-size: 14px; color: #333;">
+            <span>Calon Asdos</span>
+            <span>13018001</span>
+            <span>Framework</span>
+        </div>
+
+        <!-- Form -->
+        <form action="/Dosen/kirimKomentar" method="POST">
+            @csrf
+            
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px; color: #333; font-weight: 600;">Komentar Dosen</label>
+                <textarea name="komentar_dosen" placeholder="Tuliskan komentar Anda di sini..." style="width: 100%; min-height: 120px; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; resize: vertical; font-family: inherit;"></textarea>
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <label style="display: block; margin-bottom: 12px; color: #333; font-weight: 600;">Persetujuan</label>
+                <div style="display: flex; gap: 30px;">
+                    <label style="cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                        <input type="radio" name="persetujuan" value="setuju" checked style="cursor: pointer;" />
+                        <span>Setuju</span>
+                    </label>
+                    <label style="cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                        <input type="radio" name="persetujuan" value="tidak_setuju" style="cursor: pointer;" />
+                        <span>Tidak Setuju</span>
+                    </label>
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
+                <a href="/Dosen/cekCalonAsdos" style="padding: 10px 20px; background: #6c757d; color: white; border-radius: 6px; text-decoration: none;">
+                    ← Kembali
+                </a>
+                <button type="submit" style="padding: 10px 20px; background: #3182ce; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">
+                    Kirim
+                </button>
+            </div>
+        </form>
     </div>
 </div>
-
-</body>
-</html>
+@endsection

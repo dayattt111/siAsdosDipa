@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\MataKuliah;
 use App\Models\PendaftarAsdos;
 use App\Models\Asdos;
 use Illuminate\Http\Request;
@@ -27,7 +29,8 @@ class MahasiswaController extends Controller
     // Daftar sebagai Asdos
     public function formPendaftaran()
     {
-        return view('Mahasiswa.daftar_asdos');
+        $matakuliah = MataKuliah::orderBy('semester')->orderBy('nama_mk')->get();
+        return view('Mahasiswa.daftar_asdos', compact('matakuliah'));
     }
 
     // Simpan Pendaftaran
@@ -36,6 +39,7 @@ class MahasiswaController extends Controller
         $user = session('user');
 
         $request->validate([
+            'matakuliah_id' => 'required|exists:matakuliah,id',
             'mata_kuliah' => 'required|string|max:255',
             'kode_mk' => 'required|string|max:20',
             'ipk' => 'required|numeric|min:0|max:4',
@@ -46,6 +50,7 @@ class MahasiswaController extends Controller
 
         $data = [
             'user_id' => $user->id,
+            'matakuliah_id' => $request->matakuliah_id,
             'mata_kuliah' => $request->mata_kuliah,
             'kode_mk' => $request->kode_mk,
             'ipk' => $request->ipk,

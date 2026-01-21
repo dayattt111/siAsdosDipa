@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Asdos;
+use App\Models\MataKuliah;
 use App\Models\PendaftarAsdos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -33,7 +34,8 @@ class AdminController extends Controller
     {
         $mahasiswa = User::where('role', 'mahasiswa')->get();
         $dosen = User::where('role', 'dosen')->get();
-        return view('Admin.tambah_asdos', compact('mahasiswa', 'dosen'));
+        $matakuliah = MataKuliah::orderBy('semester')->orderBy('nama_mk')->get();
+        return view('Admin.tambah_asdos', compact('mahasiswa', 'dosen', 'matakuliah'));
     }
 
     // Simpan Asdos
@@ -60,7 +62,8 @@ class AdminController extends Controller
         $asdos = Asdos::findOrFail($id);
         $mahasiswa = User::where('role', 'mahasiswa')->get();
         $dosen = User::where('role', 'dosen')->get();
-        return view('Admin.edit_asdos', compact('asdos', 'mahasiswa', 'dosen'));
+        $matakuliah = MataKuliah::orderBy('semester')->orderBy('nama_mk')->get();
+        return view('Admin.edit_asdos', compact('asdos', 'mahasiswa', 'dosen', 'matakuliah'));
     }
 
     // Update Asdos
@@ -98,6 +101,33 @@ class AdminController extends Controller
         return view('Admin.pendaftar', compact('pendaftar'));
     }
 
+    // Form Tambah Pendaftar
+    public function createPendaftar()
+    {
+        $mahasiswa = User::where('role', 'mahasiswa')->get();
+        $matakuliah = MataKuliah::orderBy('semester')->orderBy('nama_mk')->get();
+        return view('Admin.tambah_pendaftar', compact('mahasiswa', 'matakuliah'));
+    }
+
+    // Simpan Pendaftar Baru
+    public function storePendaftar(Request $request)
+    {
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'matakuliah_id' => 'required|exists:matakuliah,id',
+            'mata_kuliah' => 'required|string|max:255',
+            'kode_mk' => 'required|string|max:20',
+            'semester' => 'required|string|max:10',
+            'ipk' => 'required|string|max:10',
+            'motivasi' => 'nullable|string',
+            'status' => 'required|in:pending,disetujui,ditolak'
+        ]);
+
+        PendaftarAsdos::create($request->all());
+
+        return redirect('/admin/pendaftar')->with('success', 'Pendaftar berhasil ditambahkan!');
+    }
+
     // Detail Pendaftar
     public function detailPendaftar($id)
     {
@@ -105,13 +135,55 @@ class AdminController extends Controller
         return view('Admin.detail_pendaftar', compact('pendaftar'));
     }
 
+    // Form Edit Pendaftar
+    public function editPendaftar($id)
+    {
+        $pendaftar = PendaftarAsdos::findOrFail($id);
+        $mahasiswa = User::where('role', 'mahasiswa')->get();
+        $matakuliah = MataKuliah::orderBy('semester')->orderBy('nama_mk')->get();
+        return view('Admin.edit_pendaftar', compact('pendaftar', 'mahasiswa', 'matakuliah'));
+    }
+
+    // Update Pendaftar
+    public function updatePendaftar(Request $request, $id)
+    {
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'matakuliah_id' => 'required|exists:matakuliah,id',
+            'mata_kuliah' => 'required|string|max:255',
+            'kode_mk' => 'required|string|max:20',
+            'semester' => 'required|string|max:10',
+            'ipk' => 'required|string|max:10',
+            'motivasi' => 'nullable|string',
+            'status' => 'required|in:pending,disetujui,ditolak'
+        ]);
+
+        $pendaftar = PendaftarAsdos::findOrFail($id);
+        $pendaftar->update($request->all());
+
+        return redirect('/admin/pendaftar')->with('success', 'Pendaftar berhasil diperbarui!');
+    }
+
     // Approve Pendaftar
     public function approvePendaftar($id)
     {
-        $pendaftar = PendaftarAsdos::findOrFail($id);
+        $pendaftar = PendaftarAsdos::with('matakuliah')->findOrFail($id);
         $pendaftar->update(['status' => 'disetujui']);
 
-        return redirect('/admin/pendaftar')->with('success', 'Pendaftar berhasil disetujui!');
+        // Automatically add to asdos
+        if ($pendaftar->matakuliah) {
+            Asdos::create([
+                'user_id' => $pendaftar->user_id,
+                'dosen_id' => $pendaftar->user_id,
+                'matakuliah_id' => $pendaftar->matakuliah_id,
+                'mata_kuliah' => $pendaftar->matakuliah->nama_mk,
+                'kode_mk' => $pendaftar->matakuliah->kode_mk,
+                'semester' => $pendaftar->matakuliah->semester,
+                'deskripsi' => 'Dari pendaftar: ' . ($pendaftar->motivasi ?? 'Tidak ada')
+            ]);
+        }
+
+        return redirect('/admin/asdos')->with('success', 'Pendaftar disetujui dan masuk ke daftar ASDOS!');
     }
 
     // Reject Pendaftar
@@ -128,6 +200,15 @@ class AdminController extends Controller
         ]);
 
         return redirect('/admin/pendaftar')->with('success', 'Pendaftar berhasil ditolak!');
+    }
+
+    // Delete Pendaftar
+    public function deletePendaftar($id)
+    {
+        $pendaftar = PendaftarAsdos::findOrFail($id);
+        $pendaftar->delete();
+
+        return redirect('/admin/pendaftar')->with('success', 'Pendaftar berhasil dihapus!');
     }
 
     // Data User

@@ -1,108 +1,83 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Mahasiswa - Manajemen Asdos</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; }
-        .navbar {
-            background: #2d3748;
-            color: white;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .navbar h1 { font-size: 24px; }
-        .navbar .user-info { display: flex; gap: 20px; align-items: center; }
-        .navbar a { color: white; text-decoration: none; padding: 8px 15px; border-radius: 5px; background: rgba(255,255,255,0.2); }
-        .navbar a:hover { background: rgba(255,255,255,0.3); }
-        .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        .stat-card {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .stat-card h3 { color: #666; font-size: 14px; margin-bottom: 10px; }
-        .stat-card .number { font-size: 32px; font-weight: bold; color: #3182ce; }
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-        .menu-card {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            text-align: center;
-            text-decoration: none;
-            color: #333;
-            transition: transform 0.2s;
-        }
-        .menu-card:hover { transform: translateY(-5px); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
-        .menu-card h3 { margin-top: 15px; color: #3182ce; }
-        .alert { padding: 15px; border-radius: 5px; margin-bottom: 20px; }
-        .alert-success { background-color: #d4edda; color: #155724; border-left: 4px solid #28a745; }
-    </style>
-</head>
-<body>
-    <div class="navbar">
-        <h1>Dashboard Mahasiswa</h1>
-        <div class="user-info">
-            <span>{{ session('user')->nama_user }}</span>
-            <a href="/logout">Logout</a>
-        </div>
+@extends('Mahasiswa.layout')
+
+@section('title', 'Dashboard Mahasiswa')
+@section('page_title', 'Dashboard')
+
+@section('content')
+{{-- <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px;">
+  <!-- Card Pendaftaran -->
+  <div class="card" style="border-left: 4px solid #3b82f6; cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+      <div>
+        <p style="color: #777; font-size: 13px; margin-bottom: 8px; font-weight: 500;">PENDAFTARAN ASDOS</p>
+        <h3 style="font-size: 28px; color: #222; margin: 0;">{{ $stats['pendaftaran'] ?? 0 }}</h3>
+        <p style="color: #999; font-size: 12px; margin-top: 4px;">Total pendaftaran</p>
+      </div>
+      <span style="font-size: 32px;">📝</span>
     </div>
+  </div>
 
-    <div class="container">
-        @if(session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
-        @endif
-
-        <div class="stats">
-            <div class="stat-card">
-                <h3>Total Pendaftaran</h3>
-                <div class="number">{{ $myPendaftaran }}</div>
-            </div>
-            <div class="stat-card">
-                <h3>Disetujui</h3>
-                <div class="number">{{ $disetujui }}</div>
-            </div>
-            <div class="stat-card">
-                <h3>Menunggu</h3>
-                <div class="number">{{ $pending }}</div>
-            </div>
-        </div>
-
-        <h2 style="margin-bottom: 20px;">Menu Mahasiswa</h2>
-        <div class="menu-grid">
-            <a href="/mahasiswa/daftar" class="menu-card">
-                <h3>📝 Daftar Asdos</h3>
-                <p>Daftar menjadi asisten dosen</p>
-            </a>
-            <a href="/mahasiswa/riwayat" class="menu-card">
-                <h3>📋 Riwayat Pendaftaran</h3>
-                <p>Lihat status pendaftaran Anda</p>
-            </a>
-            <a href="/mahasiswa/status-asdos" class="menu-card">
-                <h3>✅ Status Asdos</h3>
-                <p>Status sebagai asdos aktif</p>
-            </a>
-            <a href="/mahasiswa/profile" class="menu-card">
-                <h3>👤 Profile</h3>
-                <p>Edit profile Anda</p>
-            </a>
-        </div>
+  <!-- Card Terpilih -->
+  <div class="card" style="border-left: 4px solid #10b981; cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+      <div>
+        <p style="color: #777; font-size: 13px; margin-bottom: 8px; font-weight: 500;">TERPILIH</p>
+        <h3 style="font-size: 28px; color: #222; margin: 0;">{{ $stats['terpilih'] ?? 0 }}</h3>
+        <p style="color: #999; font-size: 12px; margin-top: 4px;">Sudah disetujui</p>
+      </div>
+      <span style="font-size: 32px;">✅</span>
     </div>
-</body>
-</html>
+  </div>
+
+  <!-- Card Belum Diproses -->
+  <div class="card" style="border-left: 4px solid #f59e0b; cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+      <div>
+        <p style="color: #777; font-size: 13px; margin-bottom: 8px; font-weight: 500;">BELUM DIPROSES</p>
+        <h3 style="font-size: 28px; color: #222; margin: 0;">{{ $stats['belum_diproses'] ?? 0 }}</h3>
+        <p style="color: #999; font-size: 12px; margin-top: 4px;">Menunggu keputusan</p>
+      </div>
+      <span style="font-size: 32px;">⏳</span>
+    </div>
+  </div>
+</div> --}}
+
+<!-- Info Section -->
+<div class="card">
+  <h3 style="margin-bottom: 16px; color: #222;">Informasi Akun</h3>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; font-size: 13px;">
+    <div style="padding: 12px; background: #f9fafb; border-radius: 6px;">
+      <p style="color: #777; margin: 0 0 4px;">Nama Lengkap</p>
+      <p style="color: #222; margin: 0; font-weight: 600;">{{ $user->nama_user ?? '-' }}</p>
+    </div>
+    <div style="padding: 12px; background: #f9fafb; border-radius: 6px;">
+      <p style="color: #777; margin: 0 0 4px;">NIM</p>
+      <p style="color: #222; margin: 0; font-weight: 600;">{{ $user->nim ?? '-' }}</p>
+    </div>
+    <div style="padding: 12px; background: #f9fafb; border-radius: 6px;">
+      <p style="color: #777; margin: 0 0 4px;">Email</p>
+      <p style="color: #222; margin: 0; font-weight: 600;">{{ $user->email ?? '-' }}</p>
+    </div>
+    <div style="padding: 12px; background: #f9fafb; border-radius: 6px;">
+      <p style="color: #777; margin: 0 0 4px;">No. HP</p>
+      <p style="color: #222; margin: 0; font-weight: 600;">{{ $user->no_hp ?? '-' }}</p>
+    </div>
+  </div>
+  {{-- <div style="margin-top: 16px;">
+    <a href="{{ route('mahasiswa.profile') }}" class="btn">Edit Profile</a>
+  </div> --}}
+</div>
+
+<!-- Quick Action -->
+<div style="margin-top: 20px;">
+  <div class="card">
+    <h3 style="margin-bottom: 16px; color: #222;">Aksi Cepat</h3>
+    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+      <a href="/mahasiswa/daftar-asdos" class="btn" style="background: #3b82f6;">Daftar Asdos</a>
+      <a href="/mahasiswa/jadwalMhs" class="btn" style="background: #8b5cf6;">Lihat Jadwal</a>
+      <a href="/mahasiswa/riwayat" class="btn" style="background: #06b6d4;">Riwayat Pendaftaran</a>
+    </div>
+  </div>
+</div>
+
+@endsection

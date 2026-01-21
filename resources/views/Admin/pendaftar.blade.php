@@ -78,7 +78,10 @@
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
 
-        <h2 style="margin-bottom: 20px;">Daftar Pendaftar Asdos</h2>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h2>Daftar Pendaftar Asdos</h2>
+            <a href="/admin/pendaftar/create" style="padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; display: inline-block;">+ Tambah Pendaftar</a>
+        </div>
 
         <table>
             <thead>
@@ -112,12 +115,17 @@
                     <td>
                         <div class="actions">
                             <a href="/admin/pendaftar/{{ $item->id }}" class="btn btn-success">Detail</a>
+                            <a href="/admin/pendaftar/{{ $item->id }}/edit" class="btn btn-success" style="background: #ffc107; color: #333;">Edit</a>
                             @if($item->status == 'pending')
                             <form action="/admin/pendaftar/{{ $item->id }}/approve" method="POST" style="display: inline;">
                                 @csrf
                                 <button type="submit" class="btn btn-success">Setujui</button>
                             </form>
                             @endif
+                            <form action="/admin/pendaftar/{{ $item->id }}/delete" method="POST" style="display: inline;" onsubmit="return confirm('Yakin ingin menghapus pendaftar ini?');">
+                                @csrf
+                                <button type="submit" class="btn btn-success" style="background: #dc3545;">Hapus</button>
+                            </form>
                         </div>
                     </td>
                 </tr>

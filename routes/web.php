@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\DashboardMahasiswaController;
+use App\Http\Controllers\EditProfileController;
 
 // Public Routes
 Route::middleware(['guest.custom'])->group(function () {
@@ -34,7 +36,12 @@ Route::middleware(['auth.custom', 'role:admin'])->prefix('admin')->group(functio
     
     // Pendaftar Management
     Route::get('/pendaftar', [AdminController::class, 'dataPendaftar'])->name('admin.pendaftar');
+    Route::get('/pendaftar/create', [AdminController::class, 'createPendaftar'])->name('admin.pendaftar.create');
+    Route::post('/pendaftar', [AdminController::class, 'storePendaftar'])->name('admin.pendaftar.store');
     Route::get('/pendaftar/{id}', [AdminController::class, 'detailPendaftar'])->name('admin.pendaftar.detail');
+    Route::get('/pendaftar/{id}/edit', [AdminController::class, 'editPendaftar'])->name('admin.pendaftar.edit');
+    Route::post('/pendaftar/{id}', [AdminController::class, 'updatePendaftar'])->name('admin.pendaftar.update');
+    Route::post('/pendaftar/{id}/delete', [AdminController::class, 'deletePendaftar'])->name('admin.pendaftar.delete');
     Route::post('/pendaftar/{id}/approve', [AdminController::class, 'approvePendaftar'])->name('admin.pendaftar.approve');
     Route::post('/pendaftar/{id}/reject', [AdminController::class, 'rejectPendaftar'])->name('admin.pendaftar.reject');
     
@@ -59,26 +66,30 @@ Route::middleware(['auth.custom', 'role:dosen'])->prefix('dosen')->group(functio
     Route::get('/pendaftar', [DosenController::class, 'dataPendaftar'])->name('dosen.pendaftar');
     Route::get('/pendaftar/{id}', [DosenController::class, 'detailPendaftar'])->name('dosen.pendaftar.detail');
     Route::post('/pendaftar/{id}/komentar', [DosenController::class, 'komentarPendaftar'])->name('dosen.pendaftar.komentar');
+    Route::post('/pendaftar/{id}/approve', [DosenController::class, 'approvePendaftar'])->name('dosen.pendaftar.approve');
+    Route::post('/pendaftar/{id}/reject', [DosenController::class, 'rejectPendaftar'])->name('dosen.pendaftar.reject');
 });
 
 // Mahasiswa Routes
 Route::middleware(['auth.custom', 'role:mahasiswa'])->prefix('mahasiswa')->group(function () {
-    Route::get('/dashboard', [MahasiswaController::class, 'dashboard'])->name('mahasiswa.dashboard');
+    // Dashboard
+    Route::get('/dashboard', [DashboardMahasiswaController::class, 'index'])->name('mahasiswa.dashboard');
     
-    // Pendaftaran Asdos
-    Route::get('/daftar', [MahasiswaController::class, 'formPendaftaran'])->name('mahasiswa.daftar');
-    Route::post('/daftar', [MahasiswaController::class, 'storePendaftaran'])->name('mahasiswa.daftar.store');
+    // Jadwal Asdos
+    Route::get('/jadwalMhs', [MahasiswaController::class, 'jadwalMhs'])->name('mahasiswa.jadwal');
+    Route::get('/jadwalMhs/status', [MahasiswaController::class, 'statusAsdos'])->name('mahasiswa.status');
+    
+    // Daftar Asdos
+    Route::get('/daftar-asdos', [MahasiswaController::class, 'formPendaftaran'])->name('mahasiswa.daftar');
+    Route::post('/daftar-asdos', [MahasiswaController::class, 'storePendaftaran'])->name('mahasiswa.daftar.store');
     
     // Riwayat
     Route::get('/riwayat', [MahasiswaController::class, 'riwayatPendaftaran'])->name('mahasiswa.riwayat');
     Route::get('/riwayat/{id}', [MahasiswaController::class, 'detailPendaftaran'])->name('mahasiswa.riwayat.detail');
     
-    // Status Asdos
-    Route::get('/status-asdos', [MahasiswaController::class, 'statusAsdos'])->name('mahasiswa.status');
-    
     // Profile
-    Route::get('/profile', [MahasiswaController::class, 'profile'])->name('mahasiswa.profile');
-    Route::post('/profile', [MahasiswaController::class, 'updateProfile'])->name('mahasiswa.profile.update');
+    Route::get('/profile', [EditProfileController::class, 'form'])->name('mahasiswa.profile');
+    Route::post('/profile', [EditProfileController::class, 'proses'])->name('mahasiswa.profile.update');
 });
 
 Route::post('/Admin/tambahcalonAsdos', [menuController::class, 'tambahCalonAsdos']);

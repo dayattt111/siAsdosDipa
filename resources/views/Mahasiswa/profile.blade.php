@@ -7,7 +7,7 @@
 <div class="card" style="max-width:500px">
   <h2 style="margin:0 0 20px;color:#111">Edit Profil</h2>
 
-  <form method="POST" action="/profile" enctype="multipart/form-data">
+  <form method="POST" action="{{ route('mahasiswa.profile.update') }}" enctype="multipart/form-data">
     @csrf
 
     <div style="margin-bottom:20px;padding:15px;background:#f3f4f6;border-radius:6px">

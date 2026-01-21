@@ -67,4 +67,43 @@ class DosenController extends Controller
 
         return redirect('/dosen/pendaftar/' . $id)->with('success', 'Komentar berhasil ditambahkan!');
     }
+
+    // Approve Pendaftar (Dosen)
+    public function approvePendaftar($id)
+    {
+        $pendaftar = PendaftarAsdos::with('matakuliah')->findOrFail($id);
+        $pendaftar->update(['status' => 'disetujui']);
+
+        // Automatically add to asdos with dosen_id
+        if ($pendaftar->matakuliah) {
+            $user = session('user');
+            Asdos::create([
+                'user_id' => $pendaftar->user_id,
+                'dosen_id' => $user->id,
+                'matakuliah_id' => $pendaftar->matakuliah_id,
+                'mata_kuliah' => $pendaftar->matakuliah->nama_mk,
+                'kode_mk' => $pendaftar->matakuliah->kode_mk,
+                'semester' => $pendaftar->matakuliah->semester,
+                'deskripsi' => 'Dari pendaftar: ' . ($pendaftar->motivasi ?? 'Tidak ada')
+            ]);
+        }
+
+        return redirect('/dosen/pendaftar')->with('success', 'Pendaftar disetujui dan masuk ke daftar ASDOS!');
+    }
+
+    // Reject Pendaftar (Dosen)
+    public function rejectPendaftar(Request $request, $id)
+    {
+        $request->validate([
+            'komentar' => 'required|string'
+        ]);
+
+        $pendaftar = PendaftarAsdos::findOrFail($id);
+        $pendaftar->update([
+            'status' => 'ditolak',
+            'komentar' => $request->komentar
+        ]);
+
+        return redirect('/dosen/pendaftar')->with('success', 'Pendaftar ditolak!');
+    }
 }

@@ -14,6 +14,7 @@ class Asdos extends Model
     protected $fillable = [
         'user_id',
         'dosen_id',
+        'matakuliah_id',
         'mata_kuliah',
         'kode_mk',
         'semester',
@@ -29,5 +30,10 @@ class Asdos extends Model
     public function dosen()
     {
         return $this->belongsTo(User::class, 'dosen_id');
+    }
+
+    public function matakuliah()
+    {
+        return $this->belongsTo(MataKuliah::class, 'matakuliah_id');
     }
 }
