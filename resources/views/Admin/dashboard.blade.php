@@ -75,6 +75,41 @@
             color: #155724;
             border-left: 4px solid #28a745;
         }
+        .layout {
+            display: flex;
+            min-height: calc(100vh - 60px);
+        }
+        .sidebar {
+            width: 250px;
+            background: white;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            padding: 20px 0;
+        }
+        .sidebar-menu {
+            list-style: none;
+        }
+        .sidebar-menu li {
+            margin: 0;
+        }
+        .sidebar-menu a {
+            display: block;
+            padding: 15px 25px;
+            color: #333;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .sidebar-menu a:hover {
+            background: #f0f0f0;
+        }
+        .sidebar-menu a.active {
+            background: #3182ce;
+            color: white;
+            border-left: 4px solid #2563eb;
+        }
+        .content {
+            flex: 1;
+            background: #f5f5f5;
+        }
     </style>
 </head>
 <body>

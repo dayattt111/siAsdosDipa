@@ -7,93 +7,104 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #4a5568;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f5f5;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 16px;
         }
         .container {
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            max-width: 500px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-width: 420px;
             width: 100%;
-            padding: 40px;
+            padding: 32px;
         }
         h1 {
             text-align: center;
-            color: #333;
-            margin-bottom: 10px;
+            color: #222;
+            margin-bottom: 8px;
+            font-size: 24px;
+            font-weight: 600;
         }
         .subtitle {
             text-align: center;
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 14px;
+            color: #777;
+            margin-bottom: 24px;
+            font-size: 13px;
         }
         .alert {
-            padding: 12px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            font-size: 14px;
+            padding: 10px 12px;
+            border-radius: 6px;
+            margin-bottom: 16px;
+            font-size: 13px;
         }
         .alert-error {
-            background-color: #fee;
-            color: #c00;
-            border-left: 4px solid #c00;
+            background-color: #fef2f2;
+            color: #b91c1c;
+            border: 1px solid #fecaca;
+        }
+        .alert-error ul {
+            margin-left: 16px;
+        }
+        .alert-error li {
+            margin-bottom: 4px;
         }
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 14px;
         }
         label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             color: #333;
             font-weight: 500;
-            font-size: 14px;
+            font-size: 13px;
         }
         input {
             width: 100%;
             padding: 10px;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 6px;
             font-size: 14px;
+            font-family: inherit;
         }
         input:focus {
             outline: none;
-            border-color: #3182ce;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
         }
         .error {
-            color: #c00;
+            color: #b91c1c;
             font-size: 12px;
-            margin-top: 3px;
+            margin-top: 4px;
         }
         button {
             width: 100%;
-            padding: 12px;
-            background: #3182ce;
+            padding: 10px;
+            background: #3b82f6;
             color: white;
             border: none;
-            border-radius: 5px;
-            font-size: 16px;
+            border-radius: 6px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             transition: background 0.2s;
-            margin-top: 10px;
+            margin-top: 8px;
         }
         button:hover {
-            background: #2c5aa0;
+            background: #2563eb;
         }
         .login-link {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 16px;
             color: #666;
+            font-size: 13px;
         }
         .login-link a {
-            color: #3182ce;
+            color: #3b82f6;
             text-decoration: none;
             font-weight: 600;
         }
@@ -109,7 +120,8 @@
 
         @if($errors->any())
             <div class="alert alert-error">
-                <ul style="margin-left: 20px;">
+                <strong>Terdapat kesalahan:</strong>
+                <ul>
                     @foreach($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
@@ -167,38 +179,5 @@
             Sudah punya akun? <a href="/login">Login di sini</a>
         </div>
     </div>
-</body>
-</html>
-
-        <input type="email" name="email" value="{{ old('email') }}" required>
-        @error('email')<div class="error">{{ $message }}</div>@enderror
-
-        <label>NIM</label>
-        <input type="text" name="nim" value="{{ old('nim') }}" required>
-        @error('nim')<div class="error">{{ $message }}</div>@enderror
-
-        <label>No. HP</label>
-        <input type="text" name="no_hp" value="{{ old('no_hp') }}" required>
-        @error('no_hp')<div class="error">{{ $message }}</div>@enderror
-
-        <label>Foto (3x4)</label>
-        <input type="file" name="gambar" accept="image/*">
-        @error('gambar')<div class="error">{{ $message }}</div>@enderror
-
-        <label>Password</label>
-        <input type="password" name="password" required>
-        @error('password')<div class="error">{{ $message }}</div>@enderror
-
-        <label>Konfirmasi Password</label>
-        <input type="password" name="password_confirmation" required>
-
-        <button type="submit" class="btn">Daftar</button>
-      </form>
-
-      <div class="link">
-        Sudah punya akun? <a href="/login">Login</a>
-      </div>
-    </div>
-  </div>
 </body>
 </html>

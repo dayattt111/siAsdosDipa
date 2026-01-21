@@ -7,91 +7,97 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #4a5568;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f5f5;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 16px;
         }
         .container {
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            max-width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-width: 380px;
             width: 100%;
-            padding: 40px;
+            padding: 32px;
         }
         h1 {
             text-align: center;
-            color: #333;
-            margin-bottom: 10px;
+            color: #222;
+            margin-bottom: 8px;
+            font-size: 24px;
+            font-weight: 600;
         }
         .subtitle {
             text-align: center;
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 14px;
+            color: #777;
+            margin-bottom: 24px;
+            font-size: 13px;
         }
         .alert {
-            padding: 12px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            font-size: 14px;
+            padding: 10px 12px;
+            border-radius: 6px;
+            margin-bottom: 16px;
+            font-size: 13px;
         }
         .alert-error {
-            background-color: #fee;
-            color: #c00;
-            border-left: 4px solid #c00;
+            background-color: #fef2f2;
+            color: #b91c1c;
+            border: 1px solid #fecaca;
         }
         .alert-success {
-            background-color: #efe;
-            color: #0a0;
-            border-left: 4px solid #0a0;
+            background-color: #f0fdf4;
+            color: #166534;
+            border: 1px solid #bbf7d0;
         }
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
         label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             color: #333;
             font-weight: 500;
+            font-size: 13px;
         }
         input {
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 6px;
             font-size: 14px;
+            font-family: inherit;
         }
         input:focus {
             outline: none;
-            border-color: #3182ce;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
         }
         button {
             width: 100%;
-            padding: 12px;
-            background: #3182ce;
+            padding: 10px;
+            background: #3b82f6;
             color: white;
             border: none;
-            border-radius: 5px;
-            font-size: 16px;
+            border-radius: 6px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             transition: background 0.2s;
         }
         button:hover {
-            background: #2c5aa0;
+            background: #2563eb;
         }
         .register-link {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 16px;
             color: #666;
+            font-size: 13px;
         }
         .register-link a {
-            color: #3182ce;
+            color: #3b82f6;
             text-decoration: none;
             font-weight: 600;
         }
@@ -117,7 +123,7 @@
             @csrf
             <div class="form-group">
                 <label for="username">Username atau Email</label>
-                <input type="text" id="username" name="username" value="{{ old('username') }}" required>
+                <input type="text" id="username" name="username" value="{{ old('username') }}" required autofocus>
             </div>
 
             <div class="form-group">
